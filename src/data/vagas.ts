@@ -10,14 +10,21 @@ export interface Vaga {
   slug: string;
 }
 
-export const empresas = [
-  { id: 1, nome: "Grão de Ouro Armazéns" },
-  { id: 2, nome: "Grão de Ouro Nutrição" },
-  { id: 3, nome: "Grão de Ouro Insumos" },
-  { id: 4, nome: "Grão de Ouro Rações" },
-  { id: 5, nome: "Grão de Ouro Máquinas" },
-  { id: 6, nome: "Grão de Ouro Transportes" },
-  { id: 7, nome: "Grão de Ouro Sementes" },
+export interface Empresa {
+  id: number;
+  nome: string;
+  slug: string;
+  descricao: string;
+}
+
+export const empresas: Empresa[] = [
+  { id: 1, nome: "Grão de Ouro Armazéns", slug: "armazens", descricao: "Referência em armazenagem de grãos com tecnologia de ponta e capacidade para milhões de toneladas." },
+  { id: 2, nome: "Grão de Ouro Nutrição", slug: "nutricao", descricao: "Especialistas em nutrição animal com foco em formulações de alta performance." },
+  { id: 3, nome: "Grão de Ouro Insumos", slug: "insumos", descricao: "Fornecimento de insumos agrícolas de qualidade para produtores de todo o Brasil." },
+  { id: 4, nome: "Grão de Ouro Rações", slug: "racoes", descricao: "Produção de rações balanceadas para diversas espécies animais." },
+  { id: 5, nome: "Grão de Ouro Máquinas", slug: "maquinas", descricao: "Parceria exclusiva com New Holland para venda e manutenção de máquinas agrícolas." },
+  { id: 6, nome: "Grão de Ouro Transportes", slug: "transportes", descricao: "Logística integrada para transporte de grãos e insumos em todo o centro-oeste." },
+  { id: 7, nome: "Grão de Ouro Sementes", slug: "sementes", descricao: "Sementes certificadas de alta qualidade para máxima produtividade no campo." },
 ];
 
 export const categorias = ["Administrativo", "Operacional", "Comercial", "Técnico"];
