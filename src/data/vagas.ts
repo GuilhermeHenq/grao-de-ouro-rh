@@ -15,16 +15,17 @@ export interface Empresa {
   nome: string;
   slug: string;
   descricao: string;
+  image: string;
 }
 
 export const empresas: Empresa[] = [
-  { id: 1, nome: "Grão de Ouro Armazéns", slug: "armazens", descricao: "Referência em armazenagem de grãos com tecnologia de ponta e capacidade para milhões de toneladas." },
-  { id: 2, nome: "Grão de Ouro Nutrição", slug: "nutricao", descricao: "Especialistas em nutrição animal com foco em formulações de alta performance." },
-  { id: 3, nome: "Grão de Ouro Insumos", slug: "insumos", descricao: "Fornecimento de insumos agrícolas de qualidade para produtores de todo o Brasil." },
-  { id: 4, nome: "Grão de Ouro Rações", slug: "racoes", descricao: "Produção de rações balanceadas para diversas espécies animais." },
-  { id: 5, nome: "Grão de Ouro Máquinas", slug: "maquinas", descricao: "Parceria exclusiva com New Holland para venda e manutenção de máquinas agrícolas." },
-  { id: 6, nome: "Grão de Ouro Transportes", slug: "transportes", descricao: "Logística integrada para transporte de grãos e insumos em todo o centro-oeste." },
-  { id: 7, nome: "Grão de Ouro Sementes", slug: "sementes", descricao: "Sementes certificadas de alta qualidade para máxima produtividade no campo." },
+  { id: 1, nome: "Grão de Ouro Armazéns", slug: "armazens", descricao: "Referência em armazenagem de grãos com tecnologia de ponta e capacidade para milhões de toneladas.", image: "https://nutrimax.ind.br/img/logo_1.png" },
+  { id: 2, nome: "Grão de Ouro Nutrição", slug: "nutricao", descricao: "Especialistas em nutrição animal com foco em formulações de alta performance.", image: "https://nutrimax.ind.br/img/logo_1.png" },
+  { id: 3, nome: "Grão de Ouro Insumos", slug: "insumos", descricao: "Fornecimento de insumos agrícolas de qualidade para produtores de todo o Brasil.", image: "https://nutrimax.ind.br/img/logo_1.png" },
+  { id: 4, nome: "Grão de Ouro Rações", slug: "racoes", descricao: "Produção de rações balanceadas para diversas espécies animais.", image: "https://nutrimax.ind.br/img/logo_1.png" },
+  { id: 5, nome: "Grão de Ouro Máquinas", slug: "maquinas", descricao: "Parceria exclusiva com New Holland para venda e manutenção de máquinas agrícolas.", image: "https://nutrimax.ind.br/img/logo_1.png" },
+  { id: 6, nome: "Grão de Ouro Transportes", slug: "transportes", descricao: "Logística integrada para transporte de grãos e insumos em todo o centro-oeste.", image: "https://nutrimax.ind.br/img/logo_1.png" },
+  { id: 7, nome: "Grão de Ouro Sementes", slug: "sementes", descricao: "Sementes certificadas de alta qualidade para máxima produtividade no campo.", image: "https://nutrimax.ind.br/img/logo_1.png" },
 ];
 
 export const categorias = ["Administrativo", "Operacional", "Comercial", "Técnico"];

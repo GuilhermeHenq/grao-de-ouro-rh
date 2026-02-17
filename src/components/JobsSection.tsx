@@ -1,7 +1,7 @@
 import { empresas } from "@/data/vagas";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Building2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const JobsSection = () => {
   return (
@@ -28,9 +28,14 @@ const JobsSection = () => {
                 to={`/${empresa.slug}`}
                 className="block bg-card rounded-2xl border gold-border gold-border-hover p-8 transition-all duration-300 hover:shadow-xl hover:shadow-gold/10 hover:-translate-y-1 group h-full"
               >
-                <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
-                  <Building2 className="w-7 h-7 text-gold" />
+                <div className="w-full h-20 flex items-center justify-start mb-6 overflow-hidden">
+                  <img 
+                    src={empresa.image} 
+                    alt={`Logo ${empresa.nome}`}
+                    className="h-full max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
+
                 <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors">
                   {empresa.nome}
                 </h3>

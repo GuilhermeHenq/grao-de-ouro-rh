@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+# Grão de Ouro - Portal de Carreiras
 
-## Project info
+Portal de vagas de emprego e oportunidades de carreira para o grupo Grão de Ouro.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Como começar
 
-## How can I edit this code?
+### Pré-requisitos
 
-There are several ways of editing your application.
+- Node.js & npm (ou Bun)
+- [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) recomendado
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Instalação
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone o repositório
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navegue até o diretório do projeto
+cd gr-o-de-ouro-careers
 
-# Step 3: Install the necessary dependencies.
+# Instale as dependências
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Tecnologias utilizadas
 
 - Vite
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
+- React Router
+- React Query
+- Lucide Icons
 
-## How can I deploy this project?
+## Scripts disponíveis
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Constrói o projeto para produção
+- `npm run preview` - Visualiza o build de produção localmente
+- `npm run lint` - Executa o linter
 
-## Can I connect a custom domain to my Lovable project?
+## Estrutura do projeto
 
-Yes, you can!
+```
+src/
+├── components/     # Componentes reutilizáveis
+├── pages/         # Páginas da aplicação
+├── data/          # Dados estáticos
+├── hooks/         # Hooks customizados
+├── lib/           # Utilitários
+├── App.tsx        # Componente principal
+└── main.tsx       # Ponto de entrada
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Contribuindo
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Sinta-se à vontade para abrir issues e fazer pull requests.
+
+## Licença
+
+Este projeto é propriedade do Grão de Ouro.
