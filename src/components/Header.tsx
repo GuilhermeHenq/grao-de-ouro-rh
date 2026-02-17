@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { label: "Início", href: "#inicio" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Números", href: "#numeros" },
-  { label: "Vagas", href: "#vagas" },
-  { label: "Perguntas", href: "#faq" },
+  { label: "Início", href: "/#inicio" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Números", href: "/#numeros" },
+  { label: "Vagas", href: "/#vagas" },
+  { label: "Perguntas", href: "/#faq" },
 ];
 
 const Header = () => {
@@ -15,9 +17,9 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-gold/10">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
-        <a href="#inicio" className="font-display text-xl font-bold text-cream tracking-wide">
-          <span className="text-gold">Grão</span> de Ouro
-        </a>
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Grupo Grão de Ouro" className="h-12" />
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
@@ -32,7 +34,7 @@ const Header = () => {
         </nav>
 
         <a
-          href="#vagas"
+          href="/#vagas"
           className="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-gold text-primary font-semibold text-sm hover:bg-gold-light transition-colors duration-200"
         >
           Ver Vagas
@@ -59,7 +61,7 @@ const Header = () => {
             </a>
           ))}
           <a
-            href="#vagas"
+            href="/#vagas"
             onClick={() => setMobileOpen(false)}
             className="mt-3 block text-center px-5 py-2 rounded-full bg-gold text-primary font-semibold text-sm"
           >

@@ -1,4 +1,5 @@
 import { Instagram, Youtube, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -6,9 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
-            <h3 className="font-display text-xl font-bold text-cream mb-4">
-              <span className="text-gold">Grão</span> de Ouro
-            </h3>
+            <img src={logo} alt="Grupo Grão de Ouro" className="h-16 mb-4 brightness-150" />
             <p className="text-cream/50 text-sm leading-relaxed">
               Tradição e inovação no agronegócio brasileiro há mais de duas décadas.
             </p>

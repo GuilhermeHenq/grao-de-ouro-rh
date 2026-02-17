@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,16 +15,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 30% 15%;
 
-    --primary: 6 30% 23%;
+    --primary: 8 37% 27%;
     --primary-foreground: 40 30% 95%;
 
-    --secondary: 43 56% 52%;
+    --secondary: 38 93% 55%;
     --secondary-foreground: 20 30% 10%;
 
     --muted: 30 15% 92%;
     --muted-foreground: 20 10% 45%;
 
-    --accent: 43 56% 52%;
+    --accent: 38 93% 55%;
     --accent-foreground: 20 30% 10%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,16 +32,16 @@
 
     --border: 30 15% 88%;
     --input: 30 15% 88%;
-    --ring: 43 56% 52%;
+    --ring: 38 93% 55%;
 
     --radius: 0.75rem;
 
-    --gold: 43 56% 52%;
-    --gold-light: 43 60% 70%;
-    --gold-dark: 43 50% 40%;
-    --brown: 6 30% 23%;
-    --brown-dark: 6 35% 15%;
-    --brown-light: 6 20% 35%;
+    --gold: 38 93% 55%;
+    --gold-light: 38 93% 65%;
+    --gold-dark: 38 80% 45%;
+    --brown: 8 37% 27%;
+    --brown-dark: 8 40% 18%;
+    --brown-light: 8 25% 38%;
     --cream: 40 30% 95%;
     --cream-dark: 30 20% 90%;
 
@@ -66,26 +66,26 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-body;
   }
 }
 
 @layer utilities {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(43 56% 52%), hsl(43 60% 70%));
+    background-image: linear-gradient(135deg, hsl(38 93% 55%), hsl(38 93% 65%));
   }
 
   .bg-brown-gradient {
-    background: linear-gradient(135deg, hsl(6 35% 15%), hsl(6 30% 23%));
+    background: linear-gradient(135deg, hsl(8 40% 18%), hsl(8 37% 27%));
   }
 
   .gold-border {
-    border-color: hsl(43 56% 52% / 0.3);
+    border-color: hsl(38 93% 55% / 0.3);
   }
 
   .gold-border-hover:hover {
-    border-color: hsl(43 56% 52% / 0.7);
+    border-color: hsl(38 93% 55% / 0.7);
   }
 }
 
