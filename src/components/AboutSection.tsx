@@ -1,9 +1,9 @@
-import { Warehouse, Beef, Tractor } from "lucide-react";
+import { Target, Eye, Award } from "lucide-react";
 
 const diferenciais = [
-  { icon: Warehouse, title: "Armazenagem moderna", desc: "Capacidade de armazenamento de alta tecnologia para milhares de toneladas." },
-  { icon: Beef, title: "Nutrição animal especializada", desc: "Rações balanceadas com pesquisa e desenvolvimento contínuos." },
-  { icon: Tractor, title: "Parceria com New Holland", desc: "Distribuição autorizada de máquinas e implementos agrícolas." },
+  { icon: Target, title: "Missão", desc: "Oferecer soluções completas e de excelência para o agronegócio brasileiro, valorizando pessoas e sustentabilidade." },
+  { icon: Eye, title: "Visão", desc: "Ser referência nacional em armazenagem, nutrição animal e insumos agrícolas, expandindo nossa atuação com inovação." },
+  { icon: Award, title: "Valores", desc: "Compromisso com a qualidade, ética, respeito às pessoas, sustentabilidade e valorização do produtor rural." },
 ];
 
 const AboutSection = () => {

@@ -30,8 +30,13 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section id="faq" className="py-20 lg:py-28 bg-brown-gradient">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="faq" className="py-20 lg:py-28 relative overflow-hidden">
+      {/* Degradê de fundo melhorado */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brown-dark via-brown to-brown-dark" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(198,147,61,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(198,147,61,0.08),transparent_50%)]" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-2">Tire suas dúvidas</p>

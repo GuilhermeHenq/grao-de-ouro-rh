@@ -4,18 +4,27 @@ import { useRef } from "react";
 import { Users, TrendingUp, Award } from "lucide-react";
 
 const stats = [
-  { icon: Award, value: 96, suffix: "%", label: "de aprovação entre colaboradores", prefix: "+" },
-  { icon: Users, value: 800, suffix: "", label: "colaboradores", prefix: "+" },
-  { icon: TrendingUp, value: 2, suffix: "bi", label: "faturados em 2025", prefix: "+R$" },
+  { icon: Award, value: 25, suffix: "", label: "vagas disponíveis", prefix: "+" },
+  { icon: Users, value: 870, suffix: "", label: "colaboradores", prefix: "+" },
+  { icon: TrendingUp, value: 7, suffix: "", label: "empresas no grupo", prefix: "+" },
 ];
-
 const NumbersSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="numeros" className="py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 lg:px-8" ref={ref}>
+    <section id="numeros" className="py-20 lg:py-28 relative overflow-hidden">
+      {/* Background com mosaico de grãos */}
+      <div className="absolute inset-0 opacity-10">
+        <img 
+          src="https://images.pexels.com/photos/12868455/pexels-photo-12868455.jpeg" 
+          alt="Grãos de milho e soja" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10" ref={ref}>
         <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-2 text-center">Nosso impacto</p>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-14">
           Sucesso em números

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe: Página Inicial Redesenhada - Grão de Ouro Carreiras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Bradley Hand', cursive;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f5f5f5;
+            border: 2px solid #999;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #333;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .wireframe-section {
+            background: white;
+            border: 2px dashed #666;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .section-label {
+            background: #333;
+            color: white;
+            padding: 4px 12px;
+            font-size: 12px;
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            font-weight: bold;
+        }
+        
+        .component-box {
+            border: 2px solid #999;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f9f9f9;
+            position: relative;
+        }
+        
+        .reuse-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #4CAF50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .new-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #FF9800;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .placeholder-img {
+            background: #ccc;
+            border: 2px dashed #666;
+            padding: 40px;
+            text-align: center;
+            color: #666;
+            margin: 10px 0;
+        }
+        
+        .flex-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .flex-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .button {
+            background: #ccc;
+            border: 2px solid #666;
+            padding: 10px 20px;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .input {
+            border: 2px solid #999;
+            padding: 8px;
+            width: 100%;
+            background: white;
+        }
+        
+        .card {
+            border: 2px solid #999;
+            padding: 15px;
+            background: white;
+            margin-bottom: 10px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .annotation {
+            background: #fffacd;
+            border-left: 4px solid #FF9800;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .icon-placeholder {
+            width: 40px;
+            height: 40px;
+            background: #999;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .nav-item {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #666;
+            margin-right: 5px;
+            background: #f0f0f0;
+        }
+        
+        .skip-link {
+            background: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            font-size: 11px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Wireframe: Redesign da Página Inicial - Carreiras Grão de Ouro</h1>
+        <p class="subtitle">Proposta de redesign focada em acessibilidade, UX e conversão</p>
+        
+        <!-- SKIP LINKS -->
+        <div class="wireframe-section">
+            <span class="section-label">NOVA FUNCIONALIDADE: Skip Links</span>
+            <div class="annotation">
+                ⚡ <strong>Melhoria de Acessibilidade:</strong> Links de navegação rápida para usuários de teclado/leitores de tela
+            </div>
+            <!-- NEW COMPONENT: SkipLinks -->
+            <div style="position: relative;">
+                <span class="new-badge" title="To be created at src/components/SkipLinks.tsx">[NEW] SkipLinks</span>
+                <div class="skip-link">Pular para conteúdo principal</div>
+                <div class="skip-link">Pular para vagas</div>
+                <div class="skip-link">Pular para rodapé</div>
+            </div>
+        </div>
+        
+        <!-- HEADER -->
+        <div class="wireframe-section">
+            <span class="section-label">HEADER - Aprimorado</span>
+            <!-- REUSABLE: Header from src/components/Header.tsx -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/Header.tsx">[REUSE] Header</span>
+                <div class="component-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>[LOGO - 120x40px]</div>
+                        <nav>
+                            <span class="nav-item">Início</span>
+                            <span class="nav-item">Sobre</span>
+                            <span class="nav-item">Números</span>
+                            <span class="nav-item">Vagas</span>
+                            <span class="nav-item">FAQ</span>
+                        </nav>
+                        <div class="button">Ver Vagas →</div>
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                ✅ <strong>Adicionar:</strong> aria-current="page", aria-label nos links, focus visible rings
+            </div>
+        </div>
+        
+        <!-- HERO SECTION -->
+        <div class="wireframe-section">
+            <span class="section-label">HERO SECTION - Otimizado</span>
+            <!-- REUSABLE: HeroSection from src/components/HeroSection.tsx -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/HeroSection.tsx">[REUSE] HeroSection</span>
+                <div class="component-box">
+                    <div class="placeholder-img" style="min-height: 400px;">
+                        [Imagem de fundo: Campo de trigo - 1920x800px]
+                        <div style="background: rgba(255,255,255,0.9); padding: 40px; margin: 40px auto; max-width: 600px; border: 3px solid #333;">
+                            <div style="font-size: 10px; text-transform: uppercase; margin-bottom: 10px;">CONSTRUINDO O FUTURO DO AGRO</div>
+                            <h2 style="font-size: 32px; margin-bottom: 15px;">Tradição, inovação e excelência no agronegócio</h2>
+                            <p style="margin-bottom: 20px; color: #666;">O Grupo Grão de Ouro é referência em armazenagem, nutrição animal...</p>
+                            <div class="button" style="font-size: 16px; padding: 15px 30px;">Ver vagas disponíveis →</div>
+                            
+                            <!-- NEW: Quick Stats -->
+                            <div style="margin-top: 30px; display: flex; gap: 30px; justify-content: center; border-top: 2px solid #999; padding-top: 20px;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: bold;">800+</div>
+                                    <div style="font-size: 11px;">Colaboradores</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: bold;">7</div>
+                                    <div style="font-size: 11px;">Empresas</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: bold;">25+</div>
+                                    <div style="font-size: 11px;">Vagas abertas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                ⚡ <strong>Novo:</strong> Stats rápidos no hero para aumentar credibilidade. <strong>Melhorar:</strong> Contraste do texto sobre imagem (overlay mais escuro)
+            </div>
+        </div>
+        
+        <!-- BREADCRUMB/PROGRESS -->
+        <div class="wireframe-section">
+            <span class="section-label">NOVA FUNCIONALIDADE: Navegação de Seções</span>
+            <!-- NEW COMPONENT: SectionNav -->
+            <div style="position: relative;">
+                <span class="new-badge" title="To be created at src/components/SectionNav.tsx">[NEW] SectionNav</span>
+                <div class="component-box" style="background: #f0f0f0;">
+                    <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+                        <div style="width: 8px; height: 8px; background: #333; border-radius: 50%;"></div>
+                        <div style="font-size: 11px; font-weight: bold;">SOBRE</div>
+                        <div style="width: 40px; height: 2px; background: #ccc;"></div>
+                        
+                        <div style="width: 8px; height: 8px; background: #ccc; border-radius: 50%;"></div>
+                        <div style="font-size: 11px; color: #999;">NÚMEROS</div>
+                        <div style="width: 40px; height: 2px; background: #ccc;"></div>
+                        
+                        <div style="width: 8px; height: 8px; background: #ccc; border-radius: 50%;"></div>
+                        <div style="font-size: 11px; color: #999;">EMPRESAS</div>
+                        <div style="width: 40px; height: 2px; background: #ccc;"></div>
+                        
+                        <div style="width: 8px; height: 8px; background: #ccc; border-radius: 50%;"></div>
+                        <div style="font-size: 11px; color: #999;">VAGAS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                🎯 <strong>UX Melhoria:</strong> Indicador de posição na página durante scroll, ajuda usuários a se orientarem
+            </div>
+        </div>
+        
+        <!-- MARQUEE -->
+        <div class="wireframe-section">
+            <span class="section-label">MARQUEE SECTION</span>
+            <!-- REUSABLE: MarqueeSection from src/components/MarqueeSection.tsx -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/MarqueeSection.tsx">[REUSE] MarqueeSection</span>
+                <div class="component-box" style="background: #e0e0e0; text-align: center; padding: 20px;">
+                    <div style="font-size: 18px; font-weight: bold;">← GRÃO DE OURO • TRADIÇÃO • EXCELÊNCIA • INOVAÇÃO →</div>
+                </div>
+            </div>
+            <div class="annotation">
+                ⚠️ <strong>Acessibilidade:</strong> Adicionar aria-hidden="true" e fornecer alternativa estática para leitores de tela
+            </div>
+        </div>
+        
+        <!-- ABOUT SECTION -->
+        <div class="wireframe-section">
+            <span class="section-label">ABOUT SECTION - Melhorado</span>
+            <!-- REUSABLE: AboutSection from src/components/AboutSection.tsx -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/AboutSection.tsx">[REUSE] AboutSection</span>
+                <div class="component-box">
+                    <div class="flex-row">
+                        <div class="flex-col">
+                            <div style="font-size: 10px; text-transform: uppercase; margin-bottom: 8px;">QUEM SOMOS</div>
+                            <h2 style="font-size: 28px; margin-bottom: 15px;">Mais de duas décadas transformando o agronegócio</h2>
+                            <p style="color: #666; margin-bottom: 15px;">O Grupo Grão de Ouro nasceu no coração de Goiás...</p>
+                            <p style="color: #666;">Com 7 empresas e mais de 800 colaboradores...</p>
+                        </div>
+                        <div class="flex-col">
+                            <div class="placeholder-img" style="min-height: 250px;">
+                                [Vídeo Institucional - 560x315px]<br>
+                                ▶ PLAY
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <div class="grid-3">
+                            <div class="card">
+                                <div class="icon-placeholder"></div>
+                                <h3 style="font-size: 16px; margin: 10px 0;">Armazenagem moderna</h3>
+                                <p style="font-size: 13px; color: #666;">Capacidade de alta tecnologia...</p>
+                            </div>
+                            <div class="card">
+                                <div class="icon-placeholder"></div>
+                                <h3 style="font-size: 16px; margin: 10px 0;">Nutrição especializada</h3>
+                                <p style="font-size: 13px; color: #666;">Rações balanceadas...</p>
+                            </div>
+                            <div class="card">
+                                <div class="icon-placeholder"></div>
+                                <h3 style="font-size: 16px; margin: 10px 0;">Parceria New Holland</h3>
+                                <p style="font-size: 13px; color: #666;">Distribuição autorizada...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                ✅ <strong>Adicionar:</strong> aria-label no iframe, melhor contraste nos cards (borda mais escura)
+            </div>
+        </div>
+        
+        <!-- NUMBERS SECTION -->
+        <div class="wireframe-section">
+            <span class="section-label">NUMBERS SECTION</span>
+            <!-- REUSABLE: NumbersSection from src/components/NumbersSection.tsx -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/NumbersSection.tsx">[REUSE] NumbersSection</span>
+                <div class="component-box">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="font-size: 10px; text-transform: uppercase; margin-bottom: 8px;">NOSSO IMPACTO</div>
+                        <h2 style="font-size: 28px;">Sucesso em números</h2>
+                    </div>
+                    
+                    <div class="grid-3">
+                        <div class="card" style="text-align: center;">
+                            <div class="icon-placeholder" style="margin: 0 auto 15px;"></div>
+                            <div style="font-size: 36px; font-weight: bold; margin-bottom: 8px;">+96%</div>
+                            <p style="font-size: 13px; color: #666;">de aprovação entre colaboradores</p>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <div class="icon-placeholder" style="margin: 0 auto 15px;"></div>
+                            <div style="font-size: 36px; font-weight: bold; margin-bottom: 8px;">+800</div>
+                            <p style="font-size: 13px; color: #666;">colaboradores</p>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <div class="icon-placeholder" style="margin: 0 auto 15px;"></div>
+                            <div style="font-size: 36px; font-weight: bold; margin-bottom: 8px;">+R$2bi</div>
+                            <p style="font-size: 13px; color: #666;">faturados em 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                ⚡ <strong>Performance:</strong> Lazy load CountUp animation (já implementado com useInView)
+            </div>
+        </div>
+        
+        <!-- JOBS/EMPRESAS SECTION - REDESIGNED -->
+        <div class="wireframe-section">
+            <span class="section-label">EMPRESAS & VAGAS - Redesenhado</span>
+            <div class="annotation">
+                🎨 <strong>Grande Mudança:</strong> Filtro visual de categorias + preview de vagas em cards expansíveis
+            </div>
+            
+            <!-- REUSABLE: JobsSection (modificado) -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/JobsSection.tsx (com modificações)">[REUSE] JobsSection</span>
+                <div class="component-box">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 10px; text-transform: uppercase; margin-bottom: 8px;">OPORTUNIDADES</div>
+                        <h2 style="font-size: 28px; margin-bottom: 10px;">Nossas Empresas</h2>
+                        <p style="color: #666; margin-bottom: 20px;">Selecione uma empresa do grupo para ver as vagas disponíveis</p>
+                        
+                        <!-- NEW: Category Filter -->
+                        <div style="position: relative;">
+                            <span class="new-badge" title="To be created">[NEW] CategoryFilter</span>
+                            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+                                <div class="button" style="background: #333; color: white; padding: 8px 16px; font-size: 13px;">Todas (25)</div>
+                                <div class="button" style="padding: 8px 16px; font-size: 13px;">Administrativo (8)</div>
+                                <div class="button" style="padding: 8px 16px; font-size: 13px;">Operacional (12)</div>
+                                <div class="button" style="padding: 8px 16px; font-size: 13px;">Comercial (3)</div>
+                                <div class="button" style="padding: 8px 16px; font-size: 13px;">Técnico (2)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-3">
+                        <!-- Card com preview de vagas -->
+                        <div class="card" style="position: relative;">
+                            <div class="placeholder-img" style="min-height: 80px; margin-bottom: 10px;">
+                                [Logo Empresa - 160x60px]
+                            </div>
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Grão de Ouro Armazéns</h3>
+                            <p style="font-size: 12px; color: #666; margin-bottom: 15px;">Referência em armazenagem de grãos...</p>
+                            
+                            <!-- NEW: Quick preview -->
+                            <div style="background: #f5f5f5; padding: 10px; margin-bottom: 10px; border-left: 3px solid #999;">
+                                <div style="font-size: 11px; font-weight: bold; margin-bottom: 5px;">3 vagas abertas:</div>
+                                <ul style="font-size: 11px; color: #666; padding-left: 15px;">
+                                    <li>Analista Administrativo</li>
+                                    <li>Auxiliar de Armazém</li>
+                                    <li>Analista de RH</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="button" style="width: 100%; padding: 10px;">Ver todas as vagas →</div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="placeholder-img" style="min-height: 80px; margin-bottom: 10px;">
+                                [Logo Empresa]
+                            </div>
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Grão de Ouro Nutrição</h3>
+                            <p style="font-size: 12px; color: #666; margin-bottom: 15px;">Especialistas em nutrição animal...</p>
+                            <div style="background: #f5f5f5; padding: 10px; margin-bottom: 10px; border-left: 3px solid #999;">
+                                <div style="font-size: 11px; font-weight: bold;">1 vaga aberta</div>
+                            </div>
+                            <div class="button" style="width: 100%; padding: 10px;">Ver vaga →</div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="placeholder-img" style="min-height: 80px; margin-bottom: 10px;">
+                                [Logo Empresa]
+                            </div>
+                            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Grão de Ouro Insumos</h3>
+                            <p style="font-size: 12px; color: #666; margin-bottom: 15px;">Fornecimento de insumos agrícolas...</p>
+                            <div style="background: #f5f5f5; padding: 10px; margin-bottom: 10px; border-left: 3px solid #999;">
+                                <div style="font-size: 11px; font-weight: bold;">2 vagas abertas</div>
+                            </div>
+                            <div class="button" style="width: 100%; padding: 10px;">Ver vagas →</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                💡 <strong>UX:</strong> Preview rápido de vagas reduz cliques. Filtro de categorias ajuda usuários a encontrar vagas relevantes mais rápido
+            </div>
+        </div>
+        
+        <!-- FAQ SECTION -->
+        <div class="wireframe-section">
+            <span class="section-label">FAQ SECTION</span>
+            <!-- REUSABLE: FAQSection from src/components/FAQSection.tsx -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/FAQSection.tsx">[REUSE] FAQSection</span>
+                <div class="component-box">
+                    <div class="flex-row">
+                        <div class="flex-col">
+                            <div style="font-size: 10px; text-transform: uppercase; margin-bottom: 8px;">TIRE SUAS DÚVIDAS</div>
+                            <h2 style="font-size: 28px; margin-bottom: 15px;">Perguntas que todos fazem</h2>
+                            <p style="color: #666;">Encontre respostas para as principais dúvidas...</p>
+                        </div>
+                        <div class="flex-col">
+                            <!-- REUSABLE: Accordion from shadcn -->
+                            <div style="position: relative;">
+                                <span class="reuse-badge" title="@/components/ui/accordion">[REUSE] Accordion</span>
+                                <div class="card">
+                                    <div style="font-weight: bold; margin-bottom: 5px;">▼ Como me candidatar a uma vaga?</div>
+                                </div>
+                                <div class="card">
+                                    <div style="font-weight: bold; margin-bottom: 5px;">▶ Preciso ter experiência?</div>
+                                </div>
+                                <div class="card">
+                                    <div style="font-weight: bold; margin-bottom: 5px;">▶ Posso me candidatar para mais de uma vaga?</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                ✅ <strong>Acessibilidade:</strong> Accordion já usa Radix UI com ARIA correto. Verificar navegação por teclado
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="wireframe-section">
+            <span class="section-label">FOOTER</span>
+            <!-- REUSABLE: Footer from src/components/Footer.tsx -->
+            <div style="position: relative;">
+                <span class="reuse-badge" title="src/components/Footer.tsx">[REUSE] Footer</span>
+                <div class="component-box" style="background: #e0e0e0;">
+                    <div class="flex-row">
+                        <div class="flex-col">
+                            <div>[LOGO - 120x50px]</div>
+                            <p style="font-size: 12px; color: #666; margin-top: 10px;">Tradição e inovação no agronegócio...</p>
+                        </div>
+                        <div class="flex-col">
+                            <div style="font-weight: bold; margin-bottom: 10px;">Contato</div>
+                            <div style="font-size: 12px; color: #666;">
+                                📍 Av. Principal, 1000<br>
+                                ✉️ contato@graodeouro.com.br<br>
+                                📞 (62) 3333-4444
+                            </div>
+                        </div>
+                        <div class="flex-col">
+                            <div style="font-weight: bold; margin-bottom: 10px;">Links</div>
+                            <div style="font-size: 12px; color: #666;">
+                                Política de Privacidade
+                            </div>
+                            <div style="margin-top: 15px;">
+                                <span class="icon-placeholder" style="width: 30px; height: 30px;"></span>
+                                <span class="icon-placeholder" style="width: 30px; height: 30px;"></span>
+                                <span class="icon-placeholder" style="width: 30px; height: 30px;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border-top: 2px solid #999; margin-top: 20px; padding-top: 15px; text-align: center; font-size: 11px; color: #666;">
+                        © 2026 Grupo Grão de Ouro. Todos os direitos reservados.
+                    </div>
+                </div>
+            </div>
+            <div class="annotation">
+                ✅ <strong>Adicionar:</strong> aria-label nos links sociais, landmarks ARIA (contentinfo)
+            </div>
+        </div>
+        
+        <!-- SUMMARY -->
+        <div class="wireframe-section" style="background: #fffacd; border-color: #FF9800;">
+            <span class="section-label" style="background: #FF9800;">RESUMO DAS MUDANÇAS</span>
+            <div style="padding: 10px;">
+                <h3 style="font-size: 18px; margin-bottom: 15px;">Principais Melhorias Propostas:</h3>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong>🎯 UX / Usabilidade:</strong>
+                    <ul style="margin-left: 20px; font-size: 13px;">
+                        <li>Preview de vagas nos cards de empresas (reduz cliques)</li>
+                        <li>Filtro visual de categorias de vagas</li>
+                        <li>Indicador de progresso/seção durante scroll</li>
+                        <li>Stats rápidos no hero para credibilidade imediata</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong>♿ Acessibilidade:</strong>
+                    <ul style="margin-left: 20px; font-size: 13px;">
+                        <li>Skip links para navegação por teclado</li>
+                        <li>aria-labels em todos os links de navegação</li>
+                        <li>aria-current nos links ativos</li>
+                        <li>aria-hidden no marquee com alternativa estática</li>
+                        <li>Focus rings visíveis em todos os elementos interativos</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong>🎨 Design Visual:</strong>
+                    <ul style="margin-left: 20px; font-size: 13px;">
+                        <li>Melhor contraste de texto sobre imagem no hero</li>
+                        <li>Bordas mais escuras nos cards para melhor definição</li>
+                        <li>Hierarquia visual mais clara com tipografia</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <strong>📦 Componentes:</strong>
+                    <ul style="margin-left: 20px; font-size: 13px;">
+                        <li><span style="background: #4CAF50; color: white; padding: 2px 6px; font-size: 10px; border-radius: 3px;">[REUSE]</span> Header, Footer, AboutSection, NumbersSection, FAQSection, JobsSection, MarqueeSection, HeroSection</li>
+                        <li><span style="background: #FF9800; color: white; padding: 2px 6px; font-size: 10px; border-radius: 3px;">[NEW]</span> SkipLinks, SectionNav, CategoryFilter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
