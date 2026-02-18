@@ -1,3 +1,4 @@
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -30,40 +31,62 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section id="faq" className="py-20 lg:py-28 relative overflow-hidden">
-      {/* Degradê de fundo melhorado */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brown-dark via-brown to-brown-dark" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(198,147,61,0.1),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(198,147,61,0.08),transparent_50%)]" />
+    <section id="faq" className="py-20 lg:py-28 bg-[#281610] relative overflow-hidden text-white">
+      {/* Background Grid Pattern - Ajustado para contrastar com o marrom */}
+      <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       
+      {/* Luz Dourada de Fundo - Opacidade levemente aumentada para destacar no marrom */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold/10 blur-[120px] rounded-full pointer-events-none"></div>
+
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-2">Tire suas dúvidas</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-cream mb-4">
-              Perguntas que todos fazem
-            </h2>
-            <p className="text-cream/60 leading-relaxed">
-              Encontre respostas para as principais dúvidas sobre oportunidades, processos seletivos e o Grupo Grão de Ouro.
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
+          <div className="relative">
+            {/* --- MOLDURA DO ÍCONE --- */}
+            <div className="relative mb-10 ml-4 inline-block">
+              {/* Moldura Externa */}
+              <div className="absolute -inset-4 border border-white/40 rounded-[2.5rem]"></div>
+              
+              {/* Container do Ícone Central - Background marrom mais escuro para profundidade */}
+              <div className="relative w-20 h-20 rounded-3xl border border-white/40 bg-[#25130e] flex items-center justify-center shadow-2xl">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFD700] via-[#FDB931] to-[#D4AF37] flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+                  <HelpCircle className="w-7 h-7 text-black stroke-[2.5px]" />
+                </div>
+              </div>
+            </div>
+            {/* ---------------------------------- */}
+
+            <p className="text-gold font-bold tracking-[0.2em] uppercase text-xs mb-4">
+              Tire suas dúvidas
             </p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
+              Perguntas que <br /> todos fazem
+            </h2>
+            <p className="text-white/70 text-lg max-w-sm mb-10 leading-relaxed">
+              Encontre respostas para as principais dúvidas sobre o Grupo Grão de Ouro.
+            </p>
+
           </div>
 
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((f, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="border-b border-gold/10 pb-2"
-              >
-                <AccordionTrigger className="text-cream hover:text-gold text-left font-medium py-4 hover:no-underline">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-cream/60 leading-relaxed pb-4">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <div>
+            <Accordion type="single" collapsible className="w-full space-y-2">
+              {faqs.map((f, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="border-b border-white/10 transition-all duration-300"
+                >
+                  <AccordionTrigger className="text-white hover:text-gold text-left text-lg py-6 font-semibold hover:no-underline group transition-all">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-white/70 text-base leading-relaxed pb-6 pr-4">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+          
         </div>
       </div>
     </section>

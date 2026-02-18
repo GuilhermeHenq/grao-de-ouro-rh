@@ -1,50 +1,67 @@
-import { Target, Eye, Award } from "lucide-react";
-
-const diferenciais = [
-  { icon: Target, title: "Missão", desc: "Oferecer soluções completas e de excelência para o agronegócio brasileiro, valorizando pessoas e sustentabilidade." },
-  { icon: Eye, title: "Visão", desc: "Ser referência nacional em armazenagem, nutrição animal e insumos agrícolas, expandindo nossa atuação com inovação." },
-  { icon: Award, title: "Valores", desc: "Compromisso com a qualidade, ética, respeito às pessoas, sustentabilidade e valorização do produtor rural." },
-];
+import React from "react";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <section id="sobre" className="py-20 lg:py-28 bg-cream-dark">
+    <section id="sobre" className="py-20 lg:py-28 bg-cream-dark overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
-          <div>
-            <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-2">Quem somos</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Mais de duas décadas transformando o agronegócio
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              O Grupo Grão de Ouro nasceu no coração de Goiás com a missão de oferecer soluções completas para o produtor rural. Ao longo dos anos, expandimos nossa atuação para armazenagem de grãos, nutrição animal, comercialização de insumos agrícolas, distribuição de máquinas e equipamentos, transporte logístico e produção de sementes certificadas.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Com 7 empresas e mais de 800 colaboradores, somos reconhecidos pela qualidade dos nossos serviços, pelo compromisso com a sustentabilidade e pela valorização das pessoas que fazem parte da nossa história.
-            </p>
-          </div>
-
-          <div className="aspect-video rounded-2xl overflow-hidden shadow-xl">
-            <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Vídeo institucional"
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {diferenciais.map((d, i) => (
-            <div key={i} className="bg-card rounded-xl p-6 border gold-border gold-border-hover transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                <d.icon className="w-6 h-6 text-gold" />
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Bloco de Texto - Agora ocupando 5 de 12 colunas para encurtar o width */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 flex flex-col justify-center"
+          >
+            <div className="max-w-xl">
+              <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-2">
+                Quem somos
+              </p>
+              <h2 className="text-primary font-display text-3xl md:text-4xl font-bold mb-6 leading-tight">
+                Mais de duas décadas transformando o agronegócio
+              </h2>
+              <div className="space-y-4 mb-10">
+                <p className="text-muted-foreground leading-relaxed">
+                  O Grupo Grão de Ouro nasceu no coração de Goiás com a missão de oferecer soluções completas para o produtor rural. Ao longo dos anos, expandimos nossa atuação para armazenagem de grãos, nutrição animal, comercialização de insumos agrícolas e produção de sementes certificadas.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Com 7 empresas e mais de 800 colaboradores, somos reconhecidos pela qualidade dos nossos serviços e pelo compromisso com a valorização das pessoas.
+                </p>
               </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-2">{d.title}</h3>
-              <p className="text-muted-foreground text-sm">{d.desc}</p>
+              
+              {/* Botão para Vagas */}
+              <a 
+                href="#vagas" 
+                className="inline-flex items-center gap-3 bg-gold hover:bg-gold/90 text-primary font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-xl shadow-gold/20 group"
+              >
+                Ver oportunidades disponíveis
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
-          ))}
+          </motion.div>
+
+          {/* Bloco do Vídeo - Ocupando 7 de 12 colunas para ter mais respiro */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 w-full"
+          >
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl  ">
+              <iframe
+                src="https://www.youtube.com/embed/utKscOqkwk4?autoplay=1&mute=1&loop=1&playlist=utKscOqkwk4"
+                title="Vídeo institucional"
+                className="absolute inset-0 w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

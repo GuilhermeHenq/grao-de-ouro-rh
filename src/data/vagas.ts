@@ -16,16 +16,48 @@ export interface Empresa {
   slug: string;
   descricao: string;
   image: string;
+  bgImage?: string;
 }
 
 export const empresas: Empresa[] = [
-  { id: 1, nome: "Grão de Ouro Armazéns", slug: "armazens", descricao: "Referência em armazenagem de grãos com tecnologia de ponta e capacidade para milhões de toneladas.", image: "https://nutrimax.ind.br/img/logo_1.png" },
-  { id: 2, nome: "Grão de Ouro Nutrição", slug: "nutricao", descricao: "Especialistas em nutrição animal com foco em formulações de alta performance.", image: "https://nutrimax.ind.br/img/logo_1.png" },
-  { id: 3, nome: "Grão de Ouro Insumos", slug: "insumos", descricao: "Fornecimento de insumos agrícolas de qualidade para produtores de todo o Brasil.", image: "https://nutrimax.ind.br/img/logo_1.png" },
-  { id: 4, nome: "Grão de Ouro Rações", slug: "racoes", descricao: "Produção de rações balanceadas para diversas espécies animais.", image: "https://nutrimax.ind.br/img/logo_1.png" },
-  { id: 5, nome: "Grão de Ouro Máquinas", slug: "maquinas", descricao: "Parceria exclusiva com New Holland para venda e manutenção de máquinas agrícolas.", image: "https://nutrimax.ind.br/img/logo_1.png" },
-  { id: 6, nome: "Grão de Ouro Transportes", slug: "transportes", descricao: "Logística integrada para transporte de grãos e insumos em todo o centro-oeste.", image: "https://nutrimax.ind.br/img/logo_1.png" },
-  { id: 7, nome: "Grão de Ouro Sementes", slug: "sementes", descricao: "Sementes certificadas de alta qualidade para máxima produtividade no campo.", image: "https://nutrimax.ind.br/img/logo_1.png" },
+  {
+    id: 1,
+    nome: "Nutrimax",
+    slug: "armazens",
+    descricao: "Referência em armazenagem de grãos com tecnologia de ponta e capacidade para milhões de toneladas.",
+    image: "https://nutrimax.ind.br/img/logo_1.png",
+    bgImage: "https://lh4.googleusercontent.com/proxy/xILnt6jlhXNXSY34vio6qvN-yK9U9qi4ijXgI9rretzLF4RavyOU3sWRYgVqEApj-8IrJiBDQW1n76F8c1NZtCnGyfZspzERHYBBNWFZp-EYxA5if3J3s7k",
+  },
+  {
+    id: 2,
+    nome: "Grão de Ouro",
+    slug: "nutricao",
+    descricao: "Especialistas em nutrição animal com foco em formulações de alta performance.",
+    image: "/src/assets/LogoGraoDeOuro.png",
+    bgImage: "https://www.comprerural.com/wp-content/uploads/2025/09/Grupo-Grao-de-Ouro-Unidade-Passos-2--750x430.jpg",
+  },
+  {
+    id: 3,
+    nome: "Grão de Ouro Máquinas",
+    slug: "insumos",
+    descricao: "Fornecimento de insumos agrícolas de qualidade para produtores de todo o Brasil.",
+    image: "https://nutrimax.ind.br/img/logo_1.png",
+    bgImage: "https://www.aciaalfenas.com.br/images/upload/images/WhatsApp_Image_2021-02-11_at_16.31.37.jpeg",
+  },
+  {
+    id: 4,
+    nome: "Grão de Ouro Rações",
+    slug: "racoes",
+    descricao: "Produção de rações balanceadas para diversas espécies animais.",
+    image: "https://nutrimax.ind.br/img/logo_1.png",
+  },
+  {
+    id: 5,
+    nome: "Grão de Ouro Máquinas",
+    slug: "maquinas",
+    descricao: "Parceria exclusiva com New Holland para venda e manutenção de máquinas agrícolas.",
+    image: "https://nutrimax.ind.br/img/logo_1.png",
+  },
 ];
 
 export const categorias = ["Administrativo", "Operacional", "Comercial", "Técnico"];
