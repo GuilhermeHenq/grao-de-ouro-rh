@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+// puxar logo aq
 
 const JobsSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -49,7 +50,7 @@ const JobsSection = () => {
           {/* Ajustado: items-start no mobile, md:items-end no desktop */}
           <div className="flex flex-col items-start md:items-end gap-4">
             <p className="text-zinc-500 text-sm max-w-xs text-left md:text-right">
-              Conheça as empresas do grupo e encontre a oportunidade ideal para sua carreira.
+              Selecione uma empresa do grupo para ver as vagas disponíveis
             </p>
           </div>
         </div>
@@ -109,7 +110,7 @@ const JobsSection = () => {
                         </p>
                       </div>
                       <div className="flex items-center gap-2 text-white/70 text-xs font-medium uppercase tracking-widest mt-2 group-hover:text-gold transition-colors">
-                        Explorar unidade <ChevronRight className="w-4 h-4" />
+                        Cadastre-se agora <ChevronRight className="w-4 h-4" />
                       </div>
                     </div>
 

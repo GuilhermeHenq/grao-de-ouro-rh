@@ -6,6 +6,7 @@ import logoForte from "/src/assets/logofortegraos.png";
 import logoSemente from "/src/assets/logosemente.png";
 import logoRental from "/src/assets/logorental.png";
 import logoNutrividas from "/src/assets/logonutrividas.png";
+import logomaquinas from "/src/assets/logomaquinas.png";
 
 
 const logosParceiras = [
@@ -38,6 +39,11 @@ const logosParceiras = [
     id: 6, 
     nome: "Nutrividas", 
     src: logoNutrividas 
+  },
+  { 
+    id: 7, 
+    nome: "Grão de Ouro Máquinas", 
+    src: logomaquinas 
   },
 ];
 

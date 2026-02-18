@@ -21,14 +21,14 @@ const AboutSection = () => {
                 Quem somos
               </p>
               <h2 className="text-primary font-display text-3xl md:text-4xl font-bold mb-6 leading-tight">
-                Mais de duas décadas transformando o agronegócio
+                Mais de 35 anos reformando o agronegócio
               </h2>
               <div className="space-y-4 mb-10">
                 <p className="text-muted-foreground leading-relaxed">
-                  O Grupo Grão de Ouro nasceu no coração de Goiás com a missão de oferecer soluções completas para o produtor rural. Ao longo dos anos, expandimos nossa atuação para armazenagem de grãos, nutrição animal, comercialização de insumos agrícolas e produção de sementes certificadas.
+                  O Grupo Grão de Ouro é uma organização consolidada no agronegócio brasileiro, com atuação estratégica em armazenagem de grãos, nutrição animal, produção agrícola, comercialização, insumos e máquinas agrícolas. Construído sobre pilares como ética, confiança e excelência operacional, o grupo desenvolveu, ao longo de sua trajetória, uma estrutura sólida e integrada, voltada a oferecer soluções completas e contribuir diretamente para o crescimento sustentável do setor agropecuário.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Com 7 empresas e mais de 800 colaboradores, somos reconhecidos pela qualidade dos nossos serviços e pelo compromisso com a valorização das pessoas.
+                  Mais do que uma empresa, o Grupo Grão de Ouro é formado por pessoas que compartilham o propósito de evoluir, inovar e gerar valor em tudo o que fazem. Com foco no desenvolvimento de talentos e na construção de um ambiente colaborativo, o grupo acredita que o crescimento da organização está diretamente conectado ao crescimento de sua equipe.
                 </p>
               </div>
               
@@ -37,7 +37,7 @@ const AboutSection = () => {
                 href="#vagas" 
                 className="inline-flex items-center gap-3 bg-gold hover:bg-gold/90 text-primary font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-xl shadow-gold/20 group"
               >
-                Ver oportunidades disponíveis
+                Saiba mais
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>

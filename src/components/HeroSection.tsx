@@ -1,39 +1,87 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
-
-const carouselImages = [
-  "https://portal.agrosummit.com.br/images/2024/07/18/liberali-implementa-erp-sap-em-empresas-do-grupo-grao-de-ouro-2jpg.jpeg",
-  "https://static.wixstatic.com/media/1317fe_5efc6f0a20a545dc82909fd54ff74c24~mv2.jpg/v1/fill/w_1000,h_912,al_c,q_85,usm_0.66_1.00_0.01/1317fe_5efc6f0a20a545dc82909fd54ff74c24~mv2.jpg", 
-  "https://www.aciaalfenas.com.br/images/upload/images/WhatsApp_Image_2021-02-11_at_16.31.37.jpeg"
-];
+import { motion, Variants, useMotionValue, useSpring, useTransform } from "framer-motion"; 
+import { TrendingUp } from "lucide-react";
+import bannerImg from "@/assets/bannersite2.png";
 
 const HeroSection = () => {
-  const [index, setIndex] = useState(0);
+  // Configuração para o efeito de perspectiva 3D no Hover
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % carouselImages.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  // Mapeia a posição do mouse para graus de rotação (ajuste os valores -15/15 para mais ou menos inclinação)
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  // Variantes originais mantidas
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const imageVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.8, x: 50 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center pt-24 lg:pt-16 overflow-hidden bg-[#050505]">
-      {/* SPOTLIGHTS DE LUZ DOURADA (#f7a824) */}
+    <section 
+      id="inicio" 
+      className="relative min-h-screen flex items-center pt-24 lg:pt-16 overflow-hidden bg-white"
+    >
+      <div className="absolute inset-0 opacity-[0.4] bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+      
+      {/* Background Blobs */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Luz superior esquerda */}
-        <div 
-          className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full opacity-20 blur-[120px]"
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 2 }}
+          className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full blur-[120px]"
           style={{ background: 'radial-gradient(circle, #f7a824 0%, transparent 70%)' }}
         />
-        {/* Luz central suave */}
-        <div 
-          className="absolute top-[20%] left-[40%] w-[60%] h-[60%] rounded-full opacity-10 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #f7a824 0%, transparent 70%)' }}
-        />
-        {/* Luz inferior direita */}
-        <div 
-          className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] rounded-full opacity-[0.15] blur-[100px]"
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 2, delay: 0.5 }}
+          className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] rounded-full blur-[100px]"
           style={{ background: 'radial-gradient(circle, #f7a824 0%, transparent 70%)' }}
         />
       </div>
@@ -41,44 +89,38 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* COLUNA DA ESQUERDA: TEXTO + BOTÃO AGRUPADOS */}
-          <div className="flex flex-col items-start justify-center order-1 lg:order-none">
+          <motion.div 
+            className="flex flex-col items-start justify-center order-1 lg:order-none"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              variants={itemVariants}
               className="text-[#f7a824] font-bold tracking-widest uppercase text-xs md:text-sm mb-4"
             >
-              Construindo o futuro do agro brasileiro
+              Cultura de valor
             </motion.p>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+              variants={itemVariants}
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#2c3e50] leading-tight mb-6"
             >
-              Tradição, inovação e{" "}
-              <span className="text-[#f7a824]">excelência</span> no agronegócio
+              Oportunidades que{" "}
+              <span className="text-[#f7a824]">impulsionam</span> sua carreira
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-white text-lg md:text-xl mb-8 max-w-xl opacity-80"
+              variants={itemVariants}
+              className="text-[#2c3e50] text-lg md:text-xl mb-8 max-w-xl opacity-90"
             >
-              O Grupo Grão de Ouro é referência em armazenagem, nutrição animal, insumos e máquinas agrícolas.
+              Faça parte do Grupo Grão de Ouro e cresça em um ambiente que valoriza pessoas, inovação e excelência em cada etapa do agronegócio.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="w-full sm:w-auto"
-            >
+            <motion.div variants={itemVariants} className="w-full sm:w-auto">
               <a
                 href="#vagas"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#f7a824] text-black font-bold hover:brightness-110 transition-all shadow-[0_0_20px_rgba(247,168,36,0.3)] w-full sm:w-auto justify-center"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#f7a824] text-black font-bold hover:brightness-110 transition-all shadow-[0_10px_20px_rgba(247,168,36,0.2)] w-full sm:w-auto justify-center"
               >
                 Ver vagas disponíveis
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -86,40 +128,51 @@ const HeroSection = () => {
                 </svg>
               </a>
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* COLUNA DA DIREITA: CARROSSEL */}
-          <div className="order-2 lg:order-none w-full relative">
-            {/* Brilho atrás do carrossel */}
-            <div className="absolute inset-0 bg-[#f7a824]/5 blur-[60px] rounded-full translate-x-4" />
-            
-            <div className="absolute -inset-2 lg:-inset-4 border border-[#f7a824]/30 rounded-2xl translate-x-2 lg:translate-x-4 translate-y-2 lg:translate-y-4 -z-10" />
-            
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 aspect-[16/10] lg:aspect-[4/3] bg-zinc-900">
-              <AnimatePresence initial={false}>
-                <motion.img
-                  key={index}
-                  src={carouselImages[index]}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1, ease: "easeInOut" }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  alt="Destaques Grupo Grão de Ouro"
-                />
-              </AnimatePresence>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-              
-              <div className="absolute bottom-4 right-6 flex gap-2 z-20">
-                {carouselImages.map((_, i) => (
-                  <div 
-                    key={i}
-                    className={`h-1.5 transition-all duration-300 rounded-full ${index === i ? "w-6 bg-[#f7a824]" : "w-2 bg-white/30"}`}
-                  />
-                ))}
-              </div>
-            </div>
+          {/* Área da Imagem com Perspectiva */}
+          <div className="order-2 lg:order-none w-full flex flex-col items-center">
+            <motion.div 
+              style={{
+                perspective: "1000px", // Define a profundidade 3D
+              }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              initial="hidden"
+              animate="visible"
+              variants={imageVariants}
+              className="relative w-full h-auto mb-12 cursor-pointer"
+            >
+              <motion.img
+                style={{
+                  rotateX,
+                  rotateY,
+                  transformStyle: "preserve-3d", // Mantém o efeito nos filhos
+                }}
+                src={bannerImg}
+                className="w-full h-auto max-h-[60vh] object-contain drop-shadow-2xl"
+                alt="Banner Grupo Grão de Ouro"
+              />
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="flex items-center gap-6 max-w-md"
+            >
+              <motion.div 
+                initial={{ rotate: -20, scale: 0 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1.2 }}
+                className="flex-shrink-0 w-16 h-16 rounded-full bg-[#fdf2e9] flex items-center justify-center"
+              >
+                <TrendingUp className="w-8 h-8 text-[#8b4513]" />
+              </motion.div>
+              <p className="text-[#2c3e50] text-lg font-medium leading-tight">
+                Junte-se a nós e descubra como podemos impulsionar seu sucesso!
+              </p>
+            </motion.div>
           </div>
           
         </div>

@@ -1,3 +1,15 @@
+import logoGrao from "@/assets/LogoGraoDeOuro.png";
+import logoGraoMaquina from "@/assets/logograodeouromaquinas.png";
+import logoForte from "@/assets/logofortegraosfundo.png";
+import logoRental from "@/assets/logorentalfundo.png";
+import logoNutrividas from "@/assets/logonutrividasfundo.png";
+import fundoNutrimax from "@/assets/nutrimax.png";
+import fundoNutrividas from "@/assets/nutrividas.png";
+import fundoRental from "@/assets/rental.png";
+import fundoForteGraos from "@/assets/fortegraos.png";
+import fundoGraoDeOuro from "@/assets/graodeourofundo.png";
+import fundoGraoDeOuroMaquinas from "@/assets/graodeouromaquinas.png";
+
 export interface Vaga {
   id: number;
   titulo: string;
@@ -19,44 +31,56 @@ export interface Empresa {
   bgImage?: string;
 }
 
+//semente interlagos não
+
 export const empresas: Empresa[] = [
   {
     id: 1,
-    nome: "Nutrimax",
-    slug: "armazens",
-    descricao: "Referência em armazenagem de grãos com tecnologia de ponta e capacidade para milhões de toneladas.",
-    image: "https://nutrimax.ind.br/img/logo_1.png",
-    bgImage: "https://lh4.googleusercontent.com/proxy/xILnt6jlhXNXSY34vio6qvN-yK9U9qi4ijXgI9rretzLF4RavyOU3sWRYgVqEApj-8IrJiBDQW1n76F8c1NZtCnGyfZspzERHYBBNWFZp-EYxA5if3J3s7k",
-  },
-  {
-    id: 2,
     nome: "Grão de Ouro",
     slug: "nutricao",
     descricao: "Especialistas em nutrição animal com foco em formulações de alta performance.",
-    image: "/src/assets/LogoGraoDeOuro.png",
-    bgImage: "https://www.comprerural.com/wp-content/uploads/2025/09/Grupo-Grao-de-Ouro-Unidade-Passos-2--750x430.jpg",
+    image: logoGrao,
+    bgImage: fundoGraoDeOuro,
+  },
+  {
+    id: 2,
+    nome: "Nutrimax",
+    slug: "armazens",
+    descricao: "Nutrimax é referência em Nutrição Animal em toda sua área de atuação",
+    image: "https://nutrimax.ind.br/img/logo_1.png", // URL externa continua normal
+    bgImage: fundoNutrimax,
   },
   {
     id: 3,
     nome: "Grão de Ouro Máquinas",
     slug: "insumos",
-    descricao: "Fornecimento de insumos agrícolas de qualidade para produtores de todo o Brasil.",
-    image: "https://nutrimax.ind.br/img/logo_1.png",
-    bgImage: "https://www.aciaalfenas.com.br/images/upload/images/WhatsApp_Image_2021-02-11_at_16.31.37.jpeg",
+    descricao: "Fornecimento de insumos agrícolas de qualidade para produtores.",
+    image: logoGraoMaquina,
+    bgImage: fundoGraoDeOuroMaquinas,
   },
   {
     id: 4,
-    nome: "Grão de Ouro Rações",
+    nome: "Forte Grãos",
     slug: "racoes",
     descricao: "Produção de rações balanceadas para diversas espécies animais.",
-    image: "https://nutrimax.ind.br/img/logo_1.png",
+    image: logoForte,
+    bgImage: fundoForteGraos,
   },
   {
     id: 5,
-    nome: "Grão de Ouro Máquinas",
+    nome: "Grão de Ouro Rental",
     slug: "maquinas",
-    descricao: "Parceria exclusiva com New Holland para venda e manutenção de máquinas agrícolas.",
-    image: "https://nutrimax.ind.br/img/logo_1.png",
+    descricao: "Parceria exclusiva com New Holland para venda e manutenção.",
+    image: logoRental,
+    bgImage: fundoRental,
+  },
+  {
+    id: 6,
+    nome: "Nutrividas",
+    slug: "nutricao",
+    descricao: "Produção de rações balanceadas para diversas espécies animais.",
+    image: logoNutrividas,
+    bgImage: fundoNutrividas,
   },
 ];
 

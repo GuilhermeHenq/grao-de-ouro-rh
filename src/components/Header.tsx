@@ -5,9 +5,8 @@ import logo from "@/assets/logograo.png";
 
 const navLinks = [
   { label: "Início", href: "/#inicio" },
+  { label: "Resultados", href: "/#numeros" },
   { label: "Sobre", href: "/#sobre" },
-  { label: "Números", href: "/#numeros" },
-  { label: "Vagas", href: "/#vagas" },
   { label: "Perguntas", href: "/#faq" },
 ];
 
@@ -15,12 +14,16 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    // Fundo branco (bg-white/95), letras pretas e sombra para destaque (shadow-md)
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-100">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
+      {/* Aumentei a altura do container de h-16 para h-20 para acomodar a logo maior */}
+      <div className="container mx-auto flex items-center justify-between h-26 px-4 lg:px-8">
         <Link to="/" className="flex items-center">
-          {/* Ajustei a altura da logo para ficar harmônica no fundo branco */}
-          <img src={logo} alt="Grupo Grão de Ouro" className="h-10 w-auto object-contain" />
+
+          <img 
+            src={logo} 
+            alt="Grupo Grão de Ouro" 
+            className="h-24 w-auto object-contain transition-transform hover:scale-105" 
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -28,8 +31,7 @@ const Header = () => {
             <a
               key={l.href}
               href={l.href}
-              // Texto em cinza escuro/preto com hover no dourado da marca
-              className="text-sm font-semibold text-zinc-800 hover:text-gold transition-colors duration-200"
+              className="text-sm font-semibold text-zinc-800 hover:text-[#f7a824] transition-colors duration-200"
             >
               {l.label}
             </a>
@@ -38,8 +40,7 @@ const Header = () => {
 
         <a
           href="/#vagas"
-          // Botão dourado com texto preto para máxima leitura
-          className="hidden md:inline-flex items-center px-6 py-2 rounded-full bg-gold text-black font-bold text-sm hover:bg-gold-light transition-all duration-200 hover:shadow-lg hover:shadow-gold/20"
+          className="hidden md:inline-flex items-center px-6 py-2.5 rounded-full bg-[#f7a824] text-black font-bold text-sm hover:brightness-110 transition-all duration-200 hover:shadow-lg hover:shadow-[#f7a824]/20"
         >
           Ver Vagas
         </a>
@@ -48,19 +49,19 @@ const Header = () => {
           className="md:hidden text-zinc-900"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu - Também em Branco */}
+      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-zinc-100 px-4 pb-6 shadow-xl">
+        <div className="md:hidden bg-white border-t border-zinc-100 px-4 pb-6 shadow-xl animate-in fade-in slide-in-from-top-4 duration-300">
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setMobileOpen(false)}
-              className="block py-4 text-zinc-800 font-medium hover:text-gold transition-colors border-b border-zinc-50 last:border-0"
+              className="block py-4 text-zinc-800 font-medium hover:text-[#f7a824] transition-colors border-b border-zinc-50 last:border-0"
             >
               {l.label}
             </a>
@@ -68,7 +69,7 @@ const Header = () => {
           <a
             href="/#vagas"
             onClick={() => setMobileOpen(false)}
-            className="mt-4 block text-center px-5 py-3 rounded-full bg-gold text-black font-bold text-sm"
+            className="mt-4 block text-center px-5 py-3 rounded-full bg-[#f7a824] text-black font-bold text-sm"
           >
             Ver Vagas
           </a>
