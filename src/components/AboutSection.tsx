@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
@@ -51,13 +51,14 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 w-full"
           >
-            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl  ">
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
               <iframe
-                src="https://www.youtube.com/embed/utKscOqkwk4?autoplay=1&mute=1&loop=1&playlist=utKscOqkwk4"
-                title="Vídeo institucional"
+                src="https://www.youtube.com/embed/utKscOqkwk4?autoplay=0&mute=1&loop=0"
+                title="Vídeo institucional do Grupo Grão de Ouro"
                 className="absolute inset-0 w-full h-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                loading="lazy"
               />
             </div>
           </motion.div>

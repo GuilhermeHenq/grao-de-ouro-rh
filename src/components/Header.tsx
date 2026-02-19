@@ -31,7 +31,7 @@ const Header = () => {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-semibold text-zinc-800 hover:text-[#f7a824] transition-colors duration-200"
+              className="text-lg font-semibold text-zinc-800 hover:text-[#f7a824] transition-colors duration-200"
             >
               {l.label}
             </a>
@@ -40,7 +40,7 @@ const Header = () => {
 
         <a
           href="/#vagas"
-          className="hidden md:inline-flex items-center px-6 py-2.5 rounded-full bg-[#f7a824] text-black font-bold text-sm hover:brightness-110 transition-all duration-200 hover:shadow-lg hover:shadow-[#f7a824]/20"
+          className="text-lg hidden md:inline-flex items-center px-6 py-2.5 rounded-full bg-[#f7a824] text-black font-bold hover:brightness-110 transition-all duration-200 hover:shadow-lg hover:shadow-[#f7a824]/20"
         >
           Ver Vagas
         </a>

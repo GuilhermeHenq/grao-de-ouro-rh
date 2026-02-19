@@ -151,7 +151,9 @@ const HeroSection = () => {
                 }}
                 src={bannerImg}
                 className="w-full h-auto max-h-[60vh] object-contain drop-shadow-2xl"
-                alt="Banner Grupo Grão de Ouro"
+                alt="Banner Grupo Grão de Ouro - Oportunidades de Carreira"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
 

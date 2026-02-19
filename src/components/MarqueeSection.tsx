@@ -1,13 +1,11 @@
 import Marquee from "react-fast-marquee";
 
-
 import logoGrao from "/src/assets/logograo.png";
 import logoForte from "/src/assets/logofortegraos.png";
 import logoSemente from "/src/assets/logosemente.png";
 import logoRental from "/src/assets/logorental.png";
 import logoNutrividas from "/src/assets/logonutrividas.png";
 import logomaquinas from "/src/assets/logomaquinas.png";
-
 
 const logosParceiras = [
   { 
@@ -50,22 +48,32 @@ const logosParceiras = [
 const MarqueeSection = () => {
   return (
     <section className="bg-white-gradient py-12 overflow-hidden border-y border-slate-100">
-      <Marquee speed={40} gradient={false} pauseOnHover={false}>
+      <Marquee speed={40} gradient={false} pauseOnHover={false} aria-hidden="true">
         <div className="flex items-center gap-20 mx-10">
           {logosParceiras.concat(logosParceiras).map((logo, index) => (
             <div
               key={`${logo.id}-${index}`}
-              className="flex items-center justify-center h-32 w-64 transition-opacity duration-500"
+              className="flex items-center justify-center h-32 w-64 transition-opacity duration-500 flex-shrink-0"
             >
               <img
                 src={logo.src}
                 alt={logo.nome}
-                className="h-16 md:h-20 max-w-full object-contain transition-opacity duration-300 pointer-events-none select-none"
+                loading="lazy"
+                decoding="async"
+                width="206"
+                height="128"
               />
             </div>
           ))}
         </div>
       </Marquee>
+
+      {/* Alternativa para leitores de tela */}
+      <div className="sr-only" role="region" aria-label="Empresas parceiras">
+        {logosParceiras.map((logo) => (
+          <span key={logo.id}>{logo.nome}</span>
+        ))}
+      </div>
     </section>
   );
 };
