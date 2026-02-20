@@ -106,7 +106,7 @@ const FAQSection = () => {
               >
                 <img
                   src={logo3d}
-                  alt="Logo Grupo Grão de Ouro"
+                  alt="Cubo 3D"
                   className="w-full h-full object-contain"
                 />
               </motion.div>

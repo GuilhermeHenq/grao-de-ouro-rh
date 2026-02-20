@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import MarqueeSection from "@/components/MarqueeSection";
@@ -11,6 +13,20 @@ import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const { hash } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+
+    if (hash === "#vagas") {
+      const timer = setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 800);
+
+      return () => clearTimeout(timer);
+    }
+  }, [hash, navigate]);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -18,7 +34,12 @@ const Index = () => {
       <MarqueeSection />
       <NumbersSection />
       <AboutSection />
-      <JobsSection />
+      
+      {/* Seção Alvo do Scroll */}
+      <div id="vagas">
+        <JobsSection />
+      </div>
+
       <TalentosBancoSection />
       <CulturaSection />
       <DepoimentosSection />

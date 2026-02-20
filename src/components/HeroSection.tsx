@@ -1,4 +1,4 @@
-import { motion, Variants, useMotionValue, useSpring, useTransform } from "framer-motion"; 
+import { motion, Variants, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { TrendingUp } from "lucide-react";
 import bannerImg from "@/assets/bannersite2.png";
 
@@ -62,22 +62,22 @@ const HeroSection = () => {
   };
 
   return (
-    <section 
-      id="inicio" 
-      className="relative min-h-screen flex items-center pt-24 lg:pt-16 overflow-hidden bg-white"
+    <section
+      id="inicio"
+      className="relative min-h-screen flex items-center pt-32 lg:pt-16 overflow-hidden bg-white"
     >
       <div className="absolute inset-0 opacity-[0.4] bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-      
+
       {/* Background Blobs */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.1 }}
           transition={{ duration: 2 }}
           className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full blur-[120px]"
           style={{ background: 'radial-gradient(circle, #f7a824 0%, transparent 70%)' }}
         />
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.1 }}
           transition={{ duration: 2, delay: 0.5 }}
@@ -88,8 +88,8 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          <motion.div 
+
+          <motion.div
             className="flex flex-col items-start justify-center order-1 lg:order-none"
             variants={containerVariants}
             initial="hidden"
@@ -132,7 +132,7 @@ const HeroSection = () => {
 
           {/* Área da Imagem com Perspectiva */}
           <div className="order-2 lg:order-none w-full flex flex-col items-center">
-            <motion.div 
+            <motion.div
               style={{
                 perspective: "1000px", // Define a profundidade 3D
               }}
@@ -157,13 +157,13 @@ const HeroSection = () => {
               />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
               className="flex items-center gap-6 max-w-md"
             >
-              <motion.div 
+              <motion.div
                 initial={{ rotate: -20, scale: 0 }}
                 animate={{ rotate: 0, scale: 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1.2 }}
@@ -176,7 +176,7 @@ const HeroSection = () => {
               </p>
             </motion.div>
           </div>
-          
+
         </div>
       </div>
     </section>
