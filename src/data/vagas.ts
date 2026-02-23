@@ -14,7 +14,7 @@ import bannerTodas from "@/assets/bgTodas.png";
 import bannerNutrividas from "@/assets/bgNutrividas.png";
 import fundoGraoDeOuroMaquinas from "@/assets/graodeouromaquinas.png";
 import todas from "@/assets/todas.png";
-import logoGrupo from "@/assets/logoGrupo.png";
+import logoGrupo from "@/assets/logogrupo.png";
 
 export interface Vaga {
   id: number;
