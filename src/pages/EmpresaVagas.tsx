@@ -72,7 +72,7 @@ const EmpresaVagas = () => {
               className="w-full h-full object-cover"
             />
           </picture>
-          <div className="absolute inset-0 opacity-90" style={{ background: `linear-gradient(to right, #1a1a1a, ${brandColor}99)` }} />
+          <div className="absolute inset-0 opacity-60" style={{ background: `linear-gradient(to right, #1a1a1a, ${brandColor}99)` }} />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10 py-12 lg:py-20">
