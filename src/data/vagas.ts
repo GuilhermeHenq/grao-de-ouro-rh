@@ -1,14 +1,20 @@
 import logoGrao from "@/assets/LogoGraoDeOuro.png";
 import logoGraoMaquina from "@/assets/logograodeouromaquinas.png";
 import logoForte from "@/assets/logofortegraosfundo.png";
-import logoRental from "@/assets/logorentalfundo.png";
 import logoNutrividas from "@/assets/logonutrividasfundo.png";
 import fundoNutrimax from "@/assets/nutrimax.png";
 import fundoNutrividas from "@/assets/nutrividas.png";
-import fundoRental from "@/assets/rental.png";
 import fundoForteGraos from "@/assets/fortegraos.png";
 import fundoGraoDeOuro from "@/assets/graodeourofundo.png";
+import bannerGraoDeOuro from "@/assets/bgGraodeOuro.png";
+import bannerNutrimax from "@/assets/bgNutrimax.png";
+import bannerForteGraos from "@/assets/bgForteGraos.png";
+import bannerGraoDeOuroMaquinas from "@/assets/bgGraodeOuroMaquinas.png";
+import bannerTodas from "@/assets/bgTodas.png";
+import bannerNutrividas from "@/assets/bgNutrividas.png";
 import fundoGraoDeOuroMaquinas from "@/assets/graodeouromaquinas.png";
+import todas from "@/assets/todas.png";
+import logoGrupo from "@/assets/logoGrupo.png";
 
 export interface Vaga {
   id: number;
@@ -27,58 +33,65 @@ export interface Empresa {
   nome: string;
   slug: string;
   descricao: string;
-  image: string;
+  image?: string;
   bgImage?: string;
   corPrincipal?: string;
+  banner?: string;
 }
 
 
 export const empresas: Empresa[] = [
   {
     id: 1,
+    nome: "Todas as Empresas",
+    slug: "todas",
+    descricao: "Explore todas as oportunidades disponíveis em nosso ecossistema de empresas.",
+    bgImage: todas,
+    image: logoGrupo,
+    corPrincipal: "#080808",
+    banner: bannerTodas,
+  },
+  {
+    id: 2,
     nome: "Grão de Ouro",
     slug: "graodeouro",
     descricao: "Especialistas em nutrição animal com foco em formulações de alta performance.",
     image: logoGrao || "https://via.placeholder.com/150",
     bgImage: fundoGraoDeOuro || "https://via.placeholder.com/1920x600",
     corPrincipal: "#5f382c",
+    banner: bannerGraoDeOuro || "https://via.placeholder.com/1920x400",
   },
   {
-    id: 2,
+    id: 3,
     nome: "Nutrimax",
     slug: "armazens",
     descricao: "Nutrimax é referência em Nutrição Animal em toda sua área de atuação",
     image: "https://nutrimax.ind.br/img/logo_1.png",
     bgImage: fundoNutrimax || "https://via.placeholder.com/1920x600",
     corPrincipal: "#c22131",
+    banner: bannerNutrimax || "https://via.placeholder.com/1920x400",
   },
   {
-    id: 3,
+    id: 4,
     nome: "Grão de Ouro Máquinas",
     slug: "insumos",
     descricao: "Fornecimento de insumos agrícolas de qualidade para produtores.",
     image: logoGraoMaquina || "https://via.placeholder.com/150",
     bgImage: fundoGraoDeOuroMaquinas || "https://via.placeholder.com/1920x600",
     corPrincipal: "#001a5c",
+    banner: bannerGraoDeOuroMaquinas || "https://via.placeholder.com/1920x400",
   },
   {
-    id: 4,
+    id: 5,
     nome: "Forte Grãos",
     slug: "racoes",
     descricao: "Produção de rações balanceadas para diversas espécies animais.",
     image: logoForte || "https://via.placeholder.com/150",
     bgImage: fundoForteGraos || "https://via.placeholder.com/1920x600",
     corPrincipal: "#ffcc00",
+    banner: bannerForteGraos || "https://via.placeholder.com/1920x400",
   },
-  {
-    id: 5,
-    nome: "Grão de Ouro Rental",
-    slug: "maquinas",
-    descricao: "Parceria exclusiva com New Holland para venda e manutenção.",
-    image: logoRental || "https://via.placeholder.com/150",
-    bgImage: fundoRental || "https://via.placeholder.com/1920x600",
-    corPrincipal: "#080808",
-  },
+
   {
     id: 6,
     nome: "Nutrividas",
@@ -87,6 +100,7 @@ export const empresas: Empresa[] = [
     image: logoNutrividas || "https://via.placeholder.com/150",
     bgImage: fundoNutrividas || "https://via.placeholder.com/1920x600",
     corPrincipal: "#1e642f",
+    banner: bannerNutrividas || "https://via.placeholder.com/1920x400",
   },
 ];
 

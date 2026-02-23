@@ -145,6 +145,16 @@ const Candidatar = () => {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] relative">
+      {/* Background Image Overlay */}
+      <div 
+        className="fixed inset-0 z-0 pointer-events-none opacity-25"
+        style={{ 
+          backgroundImage: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      />
+
       {/* Top Bar Navigation */}
       <nav className="fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 z-[100] flex items-center">
         <div className="container mx-auto px-4">
