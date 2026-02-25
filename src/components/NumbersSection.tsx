@@ -2,7 +2,7 @@ import CountUp from "react-countup";
 import { useInView, motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { useRef } from "react";
 import { Users, BarChart3, MoveUpRight } from "lucide-react";
-import { vagas, empresas } from "@/data/vagas"; 
+import { empresas } from "@/data/vagas"; 
 
 const StatCard = ({ s, inView }) => {
   const mouseX = useMotionValue(0);
@@ -87,8 +87,8 @@ const NumbersSection = () => {
     { 
       activeIcon: Users, 
       icons: [Users, BarChart3, MoveUpRight], 
-      value: vagas.length, // Dinâmico
-      label: "vagas disponíveis", 
+      value: 35,
+      label: "anos de história", 
       prefix: "+" 
     },
     { 
@@ -120,9 +120,6 @@ const NumbersSection = () => {
                 Conheça nossos resultados:
               </h2>
             </div>
-            <p className="text-zinc-500 text-sm md:text-right max-w-[280px] leading-relaxed">
-              Nossa expertise foi desenvolvida para manter a excelência em cada hectare.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">

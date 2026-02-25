@@ -9,14 +9,16 @@ import { Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 
-// --- COMPONENTE DE CAMPO (FORA DO PAI PARA PRESERVAR FOCO) ---
 const Field = ({ label, name, type = "text", placeholder, isTextArea = false, value, onChange, onBlur, error, touched }: any) => {
   const hasError = touched && error;
-  const isSuccess = touched && !error && value.length > 0;
+  // Ajuste: isSuccess agora verifica se há valor real antes de mostrar o check verde
+  const isSuccess = touched && !error && value?.trim().length > 0;
 
   return (
     <div className="space-y-2 relative">
-      <label className="text-xs font-bold text-slate-500 uppercase ml-1">{label}</label>
+      <label className="text-xs font-bold text-slate-500 uppercase ml-1">
+        {label} {name === "linkedin" && <span className="text-slate-400 font-normal">(Opcional)</span>}
+      </label>
       <div className="relative">
         {isTextArea ? (
           <textarea
@@ -147,9 +149,9 @@ const Candidatar = () => {
     <div className="min-h-screen bg-[#f8fafc] relative">
       {/* Background Image Overlay */}
       <div 
-        className="fixed inset-0 z-0 pointer-events-none opacity-25"
+        className="fixed inset-0 z-0 pointer-events-none opacity-15"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop")',
+          backgroundImage: 'url("https://editalconcursosbrasil.com.br/wp-content/uploads/2018/12/setor-administrativo.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

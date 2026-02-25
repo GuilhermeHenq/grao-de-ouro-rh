@@ -14,6 +14,8 @@ const EmpresaVagas = () => {
   const [search, setSearch] = useState("");
   const [selectedCategorias, setSelectedCategorias] = useState<string[]>([]);
   const [selectedCidades, setSelectedCidades] = useState<string[]>([]);
+  const [selectedEmpresas, setSelectedEmpresas] = useState<string[]>([]); // Novo estado para filtro de empresas
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const cidadesDisponiveis = useMemo(() => {
@@ -37,7 +39,10 @@ const EmpresaVagas = () => {
     if (!empresa) return [];
 
     return vagas.filter((v) => {
-      const matchesEmpresa = empresa.slug === "todas" ? true : v.empresa === empresa.nome;
+      // Lógica para filtrar por empresa apenas se estiver no slug "todas"
+      const matchesEmpresa = isTodasEmpresas 
+        ? (selectedEmpresas.length > 0 ? selectedEmpresas.includes(v.empresa) : true)
+        : v.empresa === empresa.nome;
 
       if (!matchesEmpresa) return false;
       if (search && !v.titulo.toLowerCase().includes(search.toLowerCase())) return false;
@@ -46,7 +51,7 @@ const EmpresaVagas = () => {
 
       return true;
     });
-  }, [empresa, search, selectedCategorias, selectedCidades]);
+  }, [empresa, isTodasEmpresas, search, selectedCategorias, selectedCidades, selectedEmpresas]);
 
   if (!empresa) return null;
 
@@ -61,11 +66,8 @@ const EmpresaVagas = () => {
       {/* Hero Banner Responsivo */}
       <div className="relative pt-20 overflow-hidden min-h-[400px] flex items-center">
         <div className="absolute inset-0 z-0">
-          {/* Lógica responsiva de imagem via classes do Tailwind */}
           <picture>
-            {/* Desktop: usa empresa.banner */}
             <source media="(min-width: 768px)" srcSet={empresa.banner} />
-            {/* Mobile: usa empresa.bgImage */}
             <img
               src={empresa.bgImage}
               alt={empresa.nome}
@@ -114,11 +116,11 @@ const EmpresaVagas = () => {
             style={{ borderColor: brandColor, color: brandColor }}
           >
             <SlidersHorizontal className="w-5 h-5" />
-            Filtros {(selectedCategorias.length + selectedCidades.length) > 0 && `(${(selectedCategorias.length + selectedCidades.length)})`}
+            Filtros {(selectedCategorias.length + selectedCidades.length + selectedEmpresas.length) > 0 && `(${(selectedCategorias.length + selectedCidades.length + selectedEmpresas.length)})`}
           </button>
         </div>
 
-        {/* Modal de Filtros (Omitido para brevidade, mas mantido conforme seu código original) */}
+        {/* Modal de Filtros */}
         <AnimatePresence>
           {isModalOpen && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -129,7 +131,35 @@ const EmpresaVagas = () => {
                   <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500"><X /></button>
                 </div>
                 <div className="p-8 max-h-[70vh] overflow-y-auto space-y-8">
-                  {/* ... conteúdo das categorias e cidades ... */}
+                  
+                  {/* Filtro de Empresas (Apenas visível se for o slug "todas") */}
+                  {isTodasEmpresas && (
+                    <div>
+                      <h3 className="flex items-center gap-2 font-bold text-slate-800 mb-4 text-sm uppercase tracking-wider">
+                        <Building2 className="w-4 h-4" /> Empresa
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {empresas.filter(e => e.slug !== "todas").map((emp) => {
+                          const active = selectedEmpresas.includes(emp.nome);
+                          return (
+                            <button
+                              key={emp.id}
+                              onClick={() => toggleSelection(emp.nome, selectedEmpresas, setSelectedEmpresas)}
+                              className="px-4 py-2 rounded-lg border-2 text-sm font-semibold transition-all flex items-center gap-2"
+                              style={{
+                                borderColor: active ? brandColor : '#e2e8f0',
+                                color: active ? brandColor : '#64748b',
+                                backgroundColor: active ? `${brandColor}10` : 'transparent'
+                              }}
+                            >
+                              {emp.nome} {active && <Check className="w-3 h-3" />}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
                   <div>
                     <h3 className="flex items-center gap-2 font-bold text-slate-800 mb-4 text-sm uppercase tracking-wider">
                       <Briefcase className="w-4 h-4" /> Área de Atuação
@@ -176,7 +206,7 @@ const EmpresaVagas = () => {
                   </div>
                 </div>
                 <div className="p-6 bg-slate-50 border-t flex gap-3">
-                  <button onClick={() => { setSelectedCategorias([]); setSelectedCidades([]); }} className="flex-1 py-3 font-bold rounded-xl border-2 transition-all" style={{ borderColor: brandColor, color: brandColor }}>Limpar tudo</button>
+                  <button onClick={() => { setSelectedCategorias([]); setSelectedCidades([]); setSelectedEmpresas([]); }} className="flex-1 py-3 font-bold rounded-xl border-2 transition-all" style={{ borderColor: brandColor, color: brandColor }}>Limpar tudo</button>
                   <button onClick={() => setIsModalOpen(false)} className="flex-1 py-3 font-bold rounded-xl shadow-lg transition-all" style={{ backgroundColor: brandColor, color: '#fff' }}>Aplicar Filtros</button>
                 </div>
               </motion.div>
@@ -241,7 +271,7 @@ const EmpresaVagas = () => {
               <p className="text-slate-500 max-w-sm mb-8">
                 Não encontramos oportunidades para os filtros selecionados ou para o termo: <span className="font-bold text-slate-700 italic">"{search}"</span>
               </p>
-              <button onClick={() => { setSearch(""); setSelectedCategorias([]); setSelectedCidades([]); }} className="px-6 py-3 rounded-xl font-bold transition-all hover:scale-105 active:scale-95" style={{ backgroundColor: `${brandColor}15`, color: brandColor }}>
+              <button onClick={() => { setSearch(""); setSelectedCategorias([]); setSelectedCidades([]); setSelectedEmpresas([]); }} className="px-6 py-3 rounded-xl font-bold transition-all hover:scale-105 active:scale-95" style={{ backgroundColor: `${brandColor}15`, color: brandColor }}>
                 Limpar todos os filtros
               </button>
             </motion.div>

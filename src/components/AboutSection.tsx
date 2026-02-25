@@ -21,7 +21,7 @@ const AboutSection = () => {
                 Quem somos
               </p>
               <h2 className="text-primary font-display text-3xl md:text-4xl font-bold mb-6 leading-tight">
-                Mais de 35 anos reformando o agronegócio
+                Nossa história
               </h2>
               <div className="space-y-4 mb-10">
                 <p className="text-muted-foreground leading-relaxed">
