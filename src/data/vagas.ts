@@ -25,6 +25,7 @@ export interface Vaga {
   descricaoCurta: string;
   descricaoCompleta: string;
   requisitos: string[];
+  beneficios: string[];
   slug: string;
 }
 
@@ -43,16 +44,6 @@ export interface Empresa {
 export const empresas: Empresa[] = [
   {
     id: 1,
-    nome: "Todas as Empresas",
-    slug: "todas",
-    descricao: "Explore todas as oportunidades disponíveis em nosso ecossistema de empresas.",
-    bgImage: todas,
-    image: logoGrupo,
-    corPrincipal: "#080808",
-    banner: bannerTodas,
-  },
-  {
-    id: 2,
     nome: "Grão de Ouro",
     slug: "graodeouro",
     descricao: "Especialistas em armazenagem, comercialização de grãos e nutrição animal, com excelência e tradição no agronegócio.",
@@ -60,6 +51,16 @@ export const empresas: Empresa[] = [
     bgImage: fundoGraoDeOuro || "https://via.placeholder.com/1920x600",
     corPrincipal: "#5f382c",
     banner: bannerGraoDeOuro || "https://via.placeholder.com/1920x400",
+  },
+  {
+    id: 2,
+    nome: "Grão de Ouro Máquinas",
+    slug: "maquinas",
+    descricao: "Concessionária New Holland, oferecendo máquinas, equipamentos e suporte especializado ao produtor rural.",
+    image: logoGraoMaquina || "https://via.placeholder.com/150",
+    bgImage: fundoGraoDeOuroMaquinas || "https://via.placeholder.com/1920x600",
+    corPrincipal: "#001a5c",
+    banner: bannerGraoDeOuroMaquinas || "https://via.placeholder.com/1920x400",
   },
   {
     id: 3,
@@ -73,13 +74,13 @@ export const empresas: Empresa[] = [
   },
   {
     id: 4,
-    nome: "Grão de Ouro Máquinas",
-    slug: "maquinas",
-    descricao: "Concessionária New Holland, oferecendo máquinas, equipamentos e suporte especializado ao produtor rura.",
-    image: logoGraoMaquina || "https://via.placeholder.com/150",
-    bgImage: fundoGraoDeOuroMaquinas || "https://via.placeholder.com/1920x600",
-    corPrincipal: "#001a5c",
-    banner: bannerGraoDeOuroMaquinas || "https://via.placeholder.com/1920x400",
+    nome: "Todas as Empresas",
+    slug: "todas",
+    descricao: "Explore todas as oportunidades disponíveis em nosso ecossistema de empresas.",
+    bgImage: todas,
+    image: logoGrupo,
+    corPrincipal: "#080808",
+    banner: bannerTodas,
   },
   {
     id: 5,
@@ -117,6 +118,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Responsável por processos administrativos e gestão de documentos da unidade.",
     descricaoCompleta: "Buscamos um Analista Administrativo para atuar na gestão de processos internos, controle de documentos, elaboração de relatórios gerenciais e suporte à diretoria.",
     requisitos: ["Graduação em Administração ou áreas correlatas", "Experiência mínima de 2 anos", "Excel avançado", "Boa comunicação"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "13º Salário", "PLR/Bônus"],
     slug: "analista-administrativo-alfenas",
   },
   {
@@ -128,6 +130,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Suporte técnico em formulação de rações e nutrição animal.",
     descricaoCompleta: "Atuação na formulação de rações balanceadas, acompanhamento nutricional de rebanhos e visitas técnicas.",
     requisitos: ["Graduação em Zootecnia ou Veterinária", "Experiência em nutrição animal", "Disponibilidade para viagens"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "Vale Transporte", "Auxílio Educação"],
     slug: "tecnico-nutricao-passos",
   },
   {
@@ -139,6 +142,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Gestão de projetos de desenvolvimento de novos produtos.",
     descricaoCompleta: "Coordenação de projetos estratégicos, acompanhamento de prazos e recursos.",
     requisitos: ["Graduação em Engenharia ou Administração", "Certificação em Gestão de Projetos", "Liderança"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "Home Office", "PLR/Bônus"],
     slug: "gestor-projetos-arcos",
   },
   {
@@ -150,6 +154,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Operação de equipamentos de produção de rações.",
     descricaoCompleta: "Condução de máquinas de produção, controle de qualidade e manutenção preventiva.",
     requisitos: ["Ensino médio completo", "Experiência em produção", "Atenção aos detalhes"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Cesta Básica", "Vale Transporte"],
     slug: "operador-producao-boa-esperanca",
   },
   {
@@ -161,6 +166,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Venda consultiva de produtos de nutrição animal.",
     descricaoCompleta: "Prospection e atendimento de clientes, apresentação de portfólio e negociação comercial.",
     requisitos: ["Experiência em vendas no agro", "CNH categoria B", "Conhecimento em nutrição animal"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "PLR/Bônus", "Convênio Odontológico"],
     slug: "vendedor-externos-nutricao-alfenas",
   },
   {
@@ -172,6 +178,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Inspeção e controle de qualidade de produtos.",
     descricaoCompleta: "Testes de qualidade, documentação de conformidade e relatórios de não conformidade.",
     requisitos: ["Graduação em Engenharia ou Química", "Experiência em QA", "Conhecimento de normas ISO"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "Auxílio Educação", "13º Salário"],
     slug: "analista-qualidade-passos",
   },
 
@@ -185,6 +192,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Manutenção e reparo de máquinas agrícolas.",
     descricaoCompleta: "Realização de manutenção preventiva e corretiva em colheitadeiras, tratores e plantadeiras.",
     requisitos: ["Experiência em mecânica agrícola", "Conhecimento em tratores e colheitadeiras", "Ferramentas próprias"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Vale Transporte", "Cesta Básica", "Seguro de Vida"],
     slug: "mecanico-maquinas-arcos",
   },
   {
@@ -196,6 +204,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Operação de máquinas agrícolas de grande porte em campo.",
     descricaoCompleta: "Procuramos operador experiente para conduzir colheitadeiras, tratores e plantadeiras New Holland.",
     requisitos: ["CNH categoria C ou superior", "Experiência com máquinas agrícolas", "Disponibilidade para viagens"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "Vale Transporte"],
     slug: "operador-maquinas-boa-esperanca",
   },
   {
@@ -207,6 +216,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Venda de peças e acessórios para máquinas agrícolas.",
     descricaoCompleta: "Prospection de clientes, apresentação de catálogo e negociação de pedidos.",
     requisitos: ["Experiência em vendas", "CNH categoria B", "Conhecimento de máquinas agrícolas"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "PLR/Bônus", "Convênio Odontológico", "Gympass"],
     slug: "vendedor-pecas-alfenas",
   },
   {
@@ -218,6 +228,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Gestão operacional da oficina e equipe técnica.",
     descricaoCompleta: "Coordenação de técnicos, cumprimento de prazos, controle de qualidade.",
     requisitos: ["Experiência em gestão de oficina", "Conhecimento mecânico", "Liderança"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "13º Salário", "PLR/Bônus", "Home Office"],
     slug: "gestor-oficina-passos",
   },
   {
@@ -229,6 +240,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Diagnóstico eletrônico e mecânico de máquinas.",
     descricaoCompleta: "Utilização de softwares de diagnóstico para identificação de problemas.",
     requisitos: ["Experiência em eletrônica agrícola", "Conhecimento em sistemas hidráulicos", "Precisão"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "Auxílio Educação", "Vale Transporte"],
     slug: "tecnico-diagnostico-arcos",
   },
   {
@@ -240,6 +252,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Consultoria técnica e comercial para escolha de máquinas.",
     descricaoCompleta: "Avaliação de necessidades do cliente, recomendação de equipamentos e negociação.",
     requisitos: ["Experiência em maquinário agrícola", "Conhecimento técnico profundo", "Capacidade analítica"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "PLR/Bônus", "Convênio Odontológico"],
     slug: "consultor-maquinas-boa-esperanca",
   },
 
@@ -253,6 +266,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Apoio nas operações de recebimento e expedição de grãos.",
     descricaoCompleta: "Auxiliar nas operações diárias do armazém, incluindo recebimento de grãos, pesagem e classificação.",
     requisitos: ["Ensino médio completo", "Disponibilidade de horário", "Proatividade"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Cesta Básica", "Vale Transporte"],
     slug: "auxiliar-armazem-alfenas",
   },
   {
@@ -264,6 +278,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Controle e gestão de estoque de produtos.",
     descricaoCompleta: "Inventário, requisições e distribuição de produtos.",
     requisitos: ["Experiência em gestão de estoque", "Conhecimento de ERP", "Atenção aos detalhes"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "PLR/Bônus", "13º Salário"],
     slug: "gestor-estoque-passos",
   },
   {
@@ -275,6 +290,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Operação de equipamentos de secagem de grãos.",
     descricaoCompleta: "Condução de secadores, monitoramento de temperatura e umidade.",
     requisitos: ["Experiência em secagem de grãos", "Ensino médio", "Responsabilidade"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Vale Transporte", "Cesta Básica"],
     slug: "operador-secador-arcos",
   },
   {
@@ -286,6 +302,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Análise e otimização de processos de produção.",
     descricaoCompleta: "Identificação de gargalos, sugestão de melhorias e acompanhamento de resultados.",
     requisitos: ["Graduação em Engenharia", "Experiência em otimização de processos", "Pensamento analítico"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "Auxílio Educação", "Home Office"],
     slug: "analista-processo-boa-esperanca",
   },
   {
@@ -297,6 +314,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Atendimento e vendas de produtos no balcão.",
     descricaoCompleta: "Orientação técnica, vendas e suporte ao cliente.",
     requisitos: ["Experiência em vendas", "Conhecimento de produtos", "Boa comunicação"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "PLR/Bônus", "Convênio Odontológico"],
     slug: "vendedor-interno-alfenas",
   },
   {
@@ -308,6 +326,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Manutenção de equipamentos de armazenagem.",
     descricaoCompleta: "Manutenção preventiva e corretiva de máquinas e instalações.",
     requisitos: ["Experiência em manutenção industrial", "Conhecimento elétrico e mecânico", "NR10 e NR35"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "Vale Transporte", "Auxílio Educação"],
     slug: "tecnico-manutencao-passos",
   },
 
@@ -321,6 +340,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Gestão da equipe comercial e estratégia de vendas.",
     descricaoCompleta: "Liderança do time de vendas, definição de metas e desenvolvimento de novos canais.",
     requisitos: ["Experiência em gestão comercial no agro", "Graduação completa", "Liderança comprovada"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "PLR/Bônus", "Home Office"],
     slug: "gerente-comercial-arcos",
   },
   {
@@ -332,6 +352,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Supervisão das operações de produção de rações.",
     descricaoCompleta: "Acompanhamento de produção, controle de qualidade e gestão de equipe.",
     requisitos: ["Experiência em supervisão", "Conhecimento de produção de rações", "Liderança"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "13º Salário", "PLR/Bônus"],
     slug: "supervisor-producao-boa-esperanca",
   },
   {
@@ -343,6 +364,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Análise de custos de produção.",
     descricaoCompleta: "Levantamento de custos, análise de rentabilidade e relatórios gerenciais.",
     requisitos: ["Graduação em Contabilidade ou Administração", "Excel avançado", "Conhecimento de custos"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Auxílio Educação", "Convênio Odontológico"],
     slug: "analista-custos-alfenas",
   },
   {
@@ -354,6 +376,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Operação de equipamentos misturadores de rações.",
     descricaoCompleta: "Condução de máquinas, pesagem de insumos, manutenção preventiva.",
     requisitos: ["Experiência em produção", "Ensino médio completo", "Proatividade"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Vale Transporte", "Cesta Básica"],
     slug: "operador-misturador-passos",
   },
   {
@@ -365,6 +388,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Controle de qualidade de rações produzidas.",
     descricaoCompleta: "Testes laboratoriais, análise de conformidade, documentação de QA.",
     requisitos: ["Graduação em Zootecnia, Veterinária ou Química", "Experiência em QA", "Conhecimento de normas"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "Auxílio Educação", "13º Salário"],
     slug: "tecnico-qualidade-arcos",
   },
   {
@@ -376,6 +400,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Promoção de vendas e animação de point de venda.",
     descricaoCompleta: "Ativações comerciais, demonstração de produtos, suporte ao varejista.",
     requisitos: ["Experiência em promoção de vendas", "Criatividade", "Dinamismo"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "PLR/Bônus", "Vale Transporte"],
     slug: "promotor-vendas-boa-esperanca",
   },
 
@@ -389,6 +414,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Transporte de grãos entre unidades.",
     descricaoCompleta: "Condução de carretas graneleiras, inspeções veiculares e segurança.",
     requisitos: ["CNH categoria E", "Curso MOPP", "Experiência com carreta"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "Vale Transporte", "Cesta Básica"],
     slug: "motorista-carreta-alfenas",
   },
   {
@@ -400,6 +426,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Manutenção da frota de veículos.",
     descricaoCompleta: "Manutenção preventiva e corretiva de caminhões e carretas.",
     requisitos: ["Experiência em manutenção de frota", "Conhecimento de diesel", "Ferramentas próprias"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "Auxílio Educação", "Vale Transporte"],
     slug: "mecanico-frota-passos",
   },
   {
@@ -411,6 +438,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Gestão de frota de veículos.",
     descricaoCompleta: "Acompanhamento de motoristas, controle de combustível, manutenção e custos.",
     requisitos: ["Experiência em gestão de frota", "Conhecimento de ERP", "Liderança"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "13º Salário", "PLR/Bônus", "Home Office"],
     slug: "gerente-frota-arcos",
   },
   {
@@ -422,6 +450,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Coordenação de rotas e agendamento de transportes.",
     descricaoCompleta: "Otimização de rotas, negociação com clientes, acompanhamento de entregas.",
     requisitos: ["Experiência em logística", "Conhecimento de roteirizadores", "Excelente comunicação"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "PLR/Bônus", "Convênio Odontológico"],
     slug: "coordenador-logistico-boa-esperanca",
   },
   {
@@ -433,6 +462,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Inspeção de segurança de veículos.",
     descricaoCompleta: "Checagem de segurança, documentação e conformidade regulatória.",
     requisitos: ["Experiência em inspeção veicular", "Conhecimento de normas de segurança"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Vale Transporte", "Cesta Básica"],
     slug: "inspetor-veicular-alfenas",
   },
   {
@@ -444,6 +474,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Apoio administrativo em logística.",
     descricaoCompleta: "Emissão de conhecimentos, controle de documentação, suporte administrativo.",
     requisitos: ["Ensino médio completo", "Excel intermediário", "Atenção aos detalhes"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Vale Transporte", "13º Salário"],
     slug: "assistente-administrativo-logistico-passos",
   },
 
@@ -457,6 +488,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Gestão de recrutamento e desenvolvimento de pessoas.",
     descricaoCompleta: "Processos seletivos, onboarding e programas de treinamento.",
     requisitos: ["Graduação em Psicologia, RH ou correlatas", "Experiência em R&S", "Conhecimento em DHO"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "Auxílio Educação", "Home Office"],
     slug: "analista-rh-arcos",
   },
   {
@@ -468,6 +500,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Operação de máquinas de produção de rações.",
     descricaoCompleta: "Condução de equipamentos, controle de qualidade e manutenção.",
     requisitos: ["Experiência em produção", "Ensino médio", "Responsabilidade"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "Cesta Básica"],
     slug: "operador-producao-boa-esperanca",
   },
   {
@@ -479,6 +512,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Venda de rações para clientes rurais.",
     descricaoCompleta: "Prospection, apresentação de produtos e negociação comercial.",
     requisitos: ["Experiência em vendas no agro", "CNH categoria B", "Conhecimento de rações"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "PLR/Bônus", "Vale Transporte", "Convênio Odontológico"],
     slug: "vendedor-campo-alfenas",
   },
   {
@@ -490,6 +524,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Formulação e otimização de rações.",
     descricaoCompleta: "Desenvolvimento de fórmulas, visitas técnicas e acompanhamento de clientes.",
     requisitos: ["Graduação em Zootecnia ou Veterinária", "Experiência em nutrição animal", "Conhecimento de softwares"],
+    beneficios: ["Plano de Saúde", "Seguro de Vida", "Gympass", "Auxílio Educação", "13º Salário"],
     slug: "tecnico-nutricao-passos",
   },
   {
@@ -501,6 +536,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Gestão do portfólio de produtos.",
     descricaoCompleta: "Análise de vendas, desenvolvimento de novos produtos, relatórios gerenciais.",
     requisitos: ["Graduação em Administração ou Engenharia", "Experiência em gestão de produtos", "Analítico"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Seguro de Vida", "PLR/Bônus", "Home Office"],
     slug: "gestor-produtos-arcos",
   },
   {
@@ -512,6 +548,7 @@ export const vagas: Vaga[] = [
     descricaoCurta: "Apoio em controle de qualidade.",
     descricaoCompleta: "Testes de qualidade, documentação e acompanhamento de não conformidades.",
     requisitos: ["Ensino médio completo", "Disposição para aprender", "Atenção aos detalhes"],
+    beneficios: ["Vale Alimentação", "Plano de Saúde", "Vale Transporte", "Cesta Básica"],
     slug: "assistente-qc-boa-esperanca",
   },
 ];
