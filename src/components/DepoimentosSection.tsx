@@ -6,31 +6,73 @@ import useEmblaCarousel from "embla-carousel-react";
 const depoimentos = [
   {
     id: 1,
-    nome: "João Silva",
-    cargo: "Analista Administrativo",
-    videoId: "7YaIDXjwefc",
-    descricao: "Excelente ambiente de trabalho e muitas oportunidades de crescimento profissional.",
+    nome: "Ademir",
+    cargo: "Líder de Expedição",
+    videoId: "V85dr-IaIsE",
+    descricao: "A liderança na expedição me permite organizar processos e garantir a qualidade de cada entrega. Aqui, cada dia é uma conquista.",
   },
   {
     id: 2,
-    nome: "Maria Santos",
-    cargo: "Técnica em Nutrição Animal",
-    videoId: "7YaIDXjwefc",
-    descricao: "A equipe é muito acolhedora e valoriza o desenvolvimento de cada pessoa.",
+    nome: "Ana Clara",
+    cargo: "Analista Plena de Processos",
+    videoId: "kZZLNLGaoLI",
+    descricao: "Atuar com melhoria contínua no Grão de Ouro me desafia a evoluir todos os dias. O suporte da equipe faz toda a diferença.",
   },
   {
     id: 3,
-    nome: "Carlos Oliveira",
-    cargo: "Operador de Máquinas",
-    videoId: "7YaIDXjwefc",
-    descricao: "Trabalhar com máquinas modernas e uma equipe que se preocupa com segurança é fantástico.",
+    nome: "Bianca Salles",
+    cargo: "Supervisora de Produção",
+    videoId: "4ejwRbEssEg",
+    descricao: "Supervisionar a produção aqui é gratificante. A empresa investe em pessoas e em tecnologia para entregar o melhor resultado.",
   },
   {
     id: 4,
-    nome: "Ana Costa",
-    cargo: "Gerente Comercial",
-    videoId: "7YaIDXjwefc",
-    descricao: "Oportunidade de estar em um grupo em crescimento, com muitas possibilidades futuras.",
+    nome: "Jamir",
+    cargo: "Mecânico Industrial",
+    videoId: "S9Xm6HrAqt0",
+    descricao: "Manter as máquinas funcionando com excelência é minha missão. O Grão de Ouro valoriza a dedicação e o trabalho bem feito.",
+  },
+  {
+    id: 5,
+    nome: "Cleide",
+    cargo: "Coordenadora Administrativa",
+    videoId: "qY02JXaiyUo",
+    descricao: "Coordenar a área administrativa em um grupo sólido e em expansão me proporciona crescimento profissional e pessoal todos os dias.",
+  },
+  {
+    id: 6,
+    nome: "Juliana",
+    cargo: "Advogada Sênior",
+    videoId: "2ez6UNB_a1s",
+    descricao: "Atuar no jurídico de uma empresa que respeita seus colaboradores e clientes torna o trabalho muito mais significativo.",
+  },
+  {
+    id: 7,
+    nome: "Lucimara",
+    cargo: "Coordenadora Administrativa",
+    videoId: "weA0Jo-vvKM",
+    descricao: "A cultura de reconhecimento e respeito do Grão de Ouro me motiva a dar o meu melhor a cada novo desafio.",
+  },
+  {
+    id: 8,
+    nome: "Robson",
+    cargo: "Coordenador Comercial",
+    videoId: "9P59Rj1DO64",
+    descricao: "Liderar a equipe comercial em um grupo que cresce com qualidade é uma oportunidade incrível de desenvolvimento.",
+  },
+  {
+    id: 9,
+    nome: "Rosiane",
+    cargo: "Supervisora Jurídica",
+    videoId: "wvFBOC81rG8",
+    descricao: "Supervisionar a área jurídica com autonomia e confiança é o que faz do Grão de Ouro um lugar especial para trabalhar.",
+  },
+  {
+    id: 10,
+    nome: "Vitor",
+    cargo: "Gestor de Aveia",
+    videoId: "Mbv0EK1WjLw",
+    descricao: "Gerir a cadeia de aveia com uma equipe comprometida e inovadora faz cada dia de trabalho valer a pena.",
   },
 ];
 
@@ -56,15 +98,15 @@ const VideoCard = ({ depoimento }: { depoimento: typeof depoimentos[0] }) => {
 
         {/* Overlay do Botão de Play - Só aparece se o vídeo não começou */}
         {!hasStarted && (
-          <div 
+          <div
             onClick={() => setHasStarted(true)}
             className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-colors cursor-pointer"
           >
-             {/* Thumbnail de fundo para evitar o player vazio antes do click */}
-             <img 
-              src={`https://img.youtube.com/vi/${depoimento.videoId}/mqdefault.jpg`} 
-              className="absolute inset-0 w-full h-full object-cover opacity-60" 
-              alt="" 
+            {/* Thumbnail de fundo para evitar o player vazio antes do click */}
+            <img
+              src={`https://img.youtube.com/vi/${depoimento.videoId}/mqdefault.jpg`}
+              className="absolute inset-0 w-full h-full object-cover opacity-60"
+              alt=""
             />
             <div className="relative w-16 h-16 rounded-full bg-[#f7a824] flex items-center justify-center text-white shadow-xl transform group-hover:scale-110 transition-transform duration-300">
               <Play fill="currentColor" size={28} className="ml-1" />
@@ -150,7 +192,7 @@ const DepoimentosSection = () => {
               Histórias reais
             </span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -159,7 +201,7 @@ const DepoimentosSection = () => {
           >
             Vozes de quem cultiva o nosso sucesso
           </motion.h2>
-          
+
           <p className="text-slate-600 text-lg leading-relaxed">
             Conheça as trajetórias de quem escolheu crescer junto com o Grupo Grão de Ouro.
           </p>
@@ -203,9 +245,8 @@ const DepoimentosSection = () => {
             <button
               key={idx}
               onClick={() => scrollTo(idx)}
-              className={`group relative h-1 transition-all duration-500 rounded-full ${
-                selectedIndex === idx ? "w-12 bg-[#f7a824]" : "w-4 bg-slate-200 hover:bg-[#5f382c]/30"
-              }`}
+              className={`group relative h-1 transition-all duration-500 rounded-full ${selectedIndex === idx ? "w-12 bg-[#f7a824]" : "w-4 bg-slate-200 hover:bg-[#5f382c]/30"
+                }`}
             >
               <span className="absolute -top-4 left-0 w-full text-center text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity text-[#5f382c]">
                 0{idx + 1}
