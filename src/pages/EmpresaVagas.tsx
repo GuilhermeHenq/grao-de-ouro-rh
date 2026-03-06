@@ -1,12 +1,14 @@
 import { useParams, Link } from "react-router-dom";
-import { vagas, empresas, categorias } from "@/data/vagas";
+import { empresas, categorias } from "@/data/vagas";
+import { useVagas } from "@/hooks/useSanity";
 import { useState, useMemo, useEffect } from "react";
-import { ArrowLeft, MapPin, Search, SlidersHorizontal, X, Check, Briefcase, Building2 } from "lucide-react";
+import { ArrowLeft, MapPin, Search, SlidersHorizontal, X, Check, Briefcase, Building2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 
 const EmpresaVagas = () => {
   const { slug } = useParams();
+  const { data: vagas = [], isLoading } = useVagas();
   const empresa = empresas.find((e) => e.slug === slug);
   const isTodasEmpresas = slug === "todas";
 
@@ -40,7 +42,7 @@ const EmpresaVagas = () => {
 
     return vagas.filter((v) => {
       // Lógica para filtrar por empresa apenas se estiver no slug "todas"
-      const matchesEmpresa = isTodasEmpresas 
+      const matchesEmpresa = isTodasEmpresas
         ? (selectedEmpresas.length > 0 ? selectedEmpresas.includes(v.empresa) : true)
         : v.empresa === empresa.nome;
 
@@ -53,6 +55,11 @@ const EmpresaVagas = () => {
     });
   }, [empresa, isTodasEmpresas, search, selectedCategorias, selectedCidades, selectedEmpresas]);
 
+  if (isLoading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <Loader2 className="w-8 h-8 animate-spin text-[#f7a824]" />
+    </div>
+  );
   if (!empresa) return null;
 
   const brandColor = empresa.corPrincipal || "#f7a824";
@@ -131,7 +138,7 @@ const EmpresaVagas = () => {
                   <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500"><X /></button>
                 </div>
                 <div className="p-8 max-h-[70vh] overflow-y-auto space-y-8">
-                  
+
                   {/* Filtro de Empresas (Apenas visível se for o slug "todas") */}
                   {isTodasEmpresas && (
                     <div>

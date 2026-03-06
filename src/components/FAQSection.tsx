@@ -21,12 +21,12 @@ const faqs = [
     a: "Sim! Você pode se candidatar para quantas vagas desejar. Recomendamos focar nas que mais se alinham ao seu perfil.",
   },
   {
-    q: "Onde ficam as unidades do grupo?",
-    a: "Nossas unidades estão localizadas em diversas cidades de Goiás, incluindo Goiânia, Rio Verde, Jataí, Itumbiara, Anápolis e Catalão.",
+    q: "Como sei se fui selecionado para a próxima etapa?",
+    a: "Caso seu perfil seja selecionado, nossa equipe ou a empresa responsável entrará em contato por telefone, e-mail ou WhatsApp.",
   },
   {
-    q: "Quais benefícios o grupo oferece?",
-    a: "Oferecemos plano de saúde, vale-alimentação, seguro de vida, programas de capacitação e um ambiente de trabalho que valoriza o crescimento profissional.",
+    q: "Fiz entrevista com o RH. Em quanto tempo recebo um retorno?",
+    a: "O prazo de retorno pode variar de acordo com a etapa do processo seletivo e o número de candidatos em avaliação. Em geral, o RH entra em contato dentro de 7 a 15 dias após a entrevista, para informar os próximos passos ou o encerramento da etapa. Pedimos que acompanhe também seu e-mail e a plataforma onde realizou a inscrição.",
   },
 ];
 
@@ -36,7 +36,7 @@ const FAQSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, 
+        staggerChildren: 0.1,
       },
     },
   };

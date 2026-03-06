@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom";
-import { vagas, empresas } from "@/data/vagas";
+import { empresas } from "@/data/vagas";
+import { useVagas } from "@/hooks/useSanity";
 import { useState, useMemo } from "react";
-import { 
-  ArrowLeft, MapPin, Building2, Send, User, 
+import {
+  ArrowLeft, MapPin, Building2, Send, User,
   FileText, Link as LinkIcon, DollarSign, Map as MapIcon,
   AlertCircle, CheckCircle2
 } from "lucide-react";
@@ -24,7 +25,7 @@ const Field = ({ label, icon: Icon, name, type = "text", placeholder, isTextArea
         {!isTextArea && Icon && (
           <Icon size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 z-10" />
         )}
-        
+
         {isTextArea ? (
           <textarea
             name={name}
@@ -33,9 +34,8 @@ const Field = ({ label, icon: Icon, name, type = "text", placeholder, isTextArea
             onBlur={onBlur}
             placeholder={placeholder}
             rows={4}
-            className={`w-full px-6 py-4 rounded-2xl bg-slate-50 border transition-all resize-none outline-none ${
-              hasError ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200 focus:bg-white"
-            }`}
+            className={`w-full px-6 py-4 rounded-2xl bg-slate-50 border transition-all resize-none outline-none ${hasError ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200 focus:bg-white"
+              }`}
             onFocus={(e) => {
               if (!hasError) {
                 e.currentTarget.style.borderColor = brandColor;
@@ -51,9 +51,8 @@ const Field = ({ label, icon: Icon, name, type = "text", placeholder, isTextArea
             onChange={onChange}
             onBlur={onBlur}
             placeholder={placeholder}
-            className={`w-full ${Icon ? 'pl-12' : 'px-6'} pr-12 py-4 rounded-2xl bg-slate-50 border transition-all outline-none ${
-              hasError ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200 focus:bg-white"
-            }`}
+            className={`w-full ${Icon ? 'pl-12' : 'px-6'} pr-12 py-4 rounded-2xl bg-slate-50 border transition-all outline-none ${hasError ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200 focus:bg-white"
+              }`}
             onFocus={(e) => {
               if (!hasError) {
                 e.currentTarget.style.borderColor = brandColor;
@@ -62,7 +61,7 @@ const Field = ({ label, icon: Icon, name, type = "text", placeholder, isTextArea
             }}
           />
         )}
-        
+
         <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2">
           <AnimatePresence mode="wait">
             {hasError && (
@@ -81,9 +80,9 @@ const Field = ({ label, icon: Icon, name, type = "text", placeholder, isTextArea
 
       <AnimatePresence>
         {hasError && (
-          <motion.p 
-            initial={{ opacity: 0, height: 0 }} 
-            animate={{ opacity: 1, height: "auto" }} 
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="text-red-500 text-xs font-semibold ml-1"
           >
@@ -98,7 +97,8 @@ const Field = ({ label, icon: Icon, name, type = "text", placeholder, isTextArea
 const VagaDetail = () => {
   const { slug } = useParams();
   const { toast } = useToast();
-  
+  const { data: vagas = [], isLoading } = useVagas();
+
   const vaga = vagas.find((v) => v.slug === slug);
   const empresa = empresas.find((e) => e.nome === vaga?.empresa);
   const brandColor = empresa?.corPrincipal || "#f7a824";
@@ -120,6 +120,11 @@ const VagaDetail = () => {
     return (r * 299 + g * 587 + b * 114) / 1000 < 155;
   }, [brandColor]);
 
+  if (isLoading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-8 h-8 border-4 border-[#f7a824] border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
   if (!vaga || !empresa) return null;
 
   // Máscaras
@@ -151,7 +156,7 @@ const VagaDetail = () => {
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setTouched(prev => ({ ...prev, [name]: true }));
-    
+
     let error = "";
     if (name === "nome" && value.trim().length < 3) error = "Nome muito curto.";
     if (name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "E-mail inválido.";
@@ -200,9 +205,10 @@ const VagaDetail = () => {
         `*Resumo:* ${form.resumo || 'Não informado'}`
       );
 
-      window.open(`https://wa.me/553598724449?text=${mensagem}`, "_blank");
+      const celularContato = vaga.celular || "553598724449";
+      window.open(`https://wa.me/${celularContato}?text=${mensagem}`, "_blank");
       toast({ title: "Sucesso!", description: "Redirecionando para o WhatsApp..." });
-      
+
     } catch (error) {
       toast({ variant: "destructive", title: "Erro", description: "Falha ao processar." });
     } finally {
@@ -212,19 +218,19 @@ const VagaDetail = () => {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] relative overflow-hidden">
-      <div 
+      <div
         className="absolute inset-0 z-0 pointer-events-none"
-        style={{ 
+        style={{
           backgroundImage: `url(${empresa.bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          opacity: 0.15 
-        }} 
+          opacity: 0.15
+        }}
       />
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-white/50 to-[#f8fafc]" />
 
-      <div 
+      <div
         className="fixed top-0 left-0 right-0 z-[100] h-16 flex items-center border-b border-white/10 backdrop-blur-xl transition-colors"
         style={{ backgroundColor: `${brandColor}CC` }}
       >
@@ -240,7 +246,7 @@ const VagaDetail = () => {
 
       <main className="pt-32 pb-20 container mx-auto px-4 relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-2xl border border-white/80 overflow-hidden">
-          
+
           <div className="p-10 md:p-14 text-center relative overflow-hidden" style={{ backgroundColor: brandColor }}>
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 blur-[100px] rounded-full -mr-32 -mt-32"></div>
             <h1 className={`text-3xl md:text-5xl font-bold mb-4 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
@@ -282,39 +288,39 @@ const VagaDetail = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
-                <Field 
-                  label="Nome Completo" name="nome" icon={User} placeholder="Seu nome" 
+                <Field
+                  label="Nome Completo" name="nome" icon={User} placeholder="Seu nome"
                   value={form.nome} onChange={handleChange} onBlur={handleBlur}
                   error={errors.nome} touched={touched.nome} brandColor={brandColor}
                 />
-                <Field 
-                  label="E-mail" name="email" type="email" icon={FileText} placeholder="seu@email.com" 
+                <Field
+                  label="E-mail" name="email" type="email" icon={FileText} placeholder="seu@email.com"
                   value={form.email} onChange={handleChange} onBlur={handleBlur}
                   error={errors.email} touched={touched.email} brandColor={brandColor}
                 />
-                <Field 
-                  label="WhatsApp" name="whatsapp" icon={Send} placeholder="(00) 00000-0000" 
+                <Field
+                  label="WhatsApp" name="whatsapp" icon={Send} placeholder="(00) 00000-0000"
                   value={form.whatsapp} onChange={handleChange} onBlur={handleBlur}
                   error={errors.whatsapp} touched={touched.whatsapp} brandColor={brandColor}
                 />
-                <Field 
-                  label="Cidade/UF" name="cidade" icon={MapIcon} placeholder="Ex: Alfenas/MG" 
+                <Field
+                  label="Cidade/UF" name="cidade" icon={MapIcon} placeholder="Ex: Alfenas/MG"
                   value={form.cidade} onChange={handleChange} onBlur={handleBlur}
                   error={errors.cidade} touched={touched.cidade} brandColor={brandColor}
                 />
-                <Field 
+                <Field
                   label="LinkedIn / Portfólio" name="linkedin" icon={LinkIcon} placeholder="https://..." optional
                   value={form.linkedin} onChange={handleChange} onBlur={handleBlur}
                   error={errors.linkedin} touched={touched.linkedin} brandColor={brandColor}
                 />
-                <Field 
-                  label="Pretensão Salarial" name="pretensao" icon={DollarSign} placeholder="R$ 0,00" 
+                <Field
+                  label="Pretensão Salarial" name="pretensao" icon={DollarSign} placeholder="R$ 0,00"
                   value={form.pretensao} onChange={handleChange} onBlur={handleBlur}
                   error={errors.pretensao} touched={touched.pretensao} brandColor={brandColor}
                 />
               </div>
 
-              <Field 
+              <Field
                 label="Resumo Profissional" name="resumo" isTextArea placeholder="Conte-nos um pouco sobre você..." optional
                 value={form.resumo} onChange={handleChange} onBlur={handleBlur}
                 error={errors.resumo} touched={touched.resumo} brandColor={brandColor}
@@ -333,7 +339,7 @@ const VagaDetail = () => {
           </form>
         </motion.div>
       </main>
-      
+
       <Footer brandColor={brandColor} showLogo={false} />
     </div>
   );

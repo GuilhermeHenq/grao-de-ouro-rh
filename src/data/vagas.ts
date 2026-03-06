@@ -17,7 +17,7 @@ import todas from "@/assets/todas.png";
 import logoGrupo from "@/assets/logogrupo.png";
 
 export interface Vaga {
-  id: number;
+  id: number | string;
   titulo: string;
   empresa: string;
   categoria: string;
@@ -27,6 +27,7 @@ export interface Vaga {
   requisitos: string[];
   beneficios: string[];
   slug: string;
+  celular?: string;
 }
 
 export interface Empresa {

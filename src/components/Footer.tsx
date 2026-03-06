@@ -13,16 +13,16 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Lógica para detectar se a cor de fundo é clara ou escura
+
   const isDark = useMemo(() => {
     if (!brandColor) return true; // O marrom padrão da home é escuro
-    
+
     const hex = brandColor.replace('#', '');
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    return brightness < 155; 
+    return brightness < 155;
   }, [brandColor]);
 
   const socialLinks = [
@@ -36,16 +36,14 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
   const subTextColor = isDark ? "text-white/60" : "text-slate-600";
   const borderColor = isDark ? "border-white/10" : "border-black/10";
 
-  // Lógica específica para os títulos e ícones (Localização / Fale Conosco)
-  // Se for a Home (sem brandColor), mantém o dourado. 
-  // Se for empresa, segue o contraste branco ou preto.
+
   const titleAndIconColor = useMemo(() => {
-    if (!brandColor) return "#f7a824"; 
+    if (!brandColor) return "#f7a824";
     return isDark ? "#ffffff" : "#000000";
   }, [brandColor, isDark]);
 
   return (
-    <footer 
+    <footer
       className={`relative py-12 overflow-hidden transition-colors duration-500 ${textColor}`}
       style={{ backgroundColor: bgColor }}
     >
@@ -54,14 +52,14 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
-          
-          {/* COLUNA 1: LOGO */}
           <div className="space-y-4">
             {showLogo && (
-              <img 
-                src={logo} 
-                alt="Grupo Grão de Ouro" 
-                className={`h-20 w-auto transition-all ${isDark ? "brightness-0 invert" : "brightness-100"}`} 
+              <img
+                src={logo}
+                alt="Grupo Grão de Ouro"
+                width={160}
+                height={80}
+                className={`h-20 w-auto transition-all ${isDark ? "brightness-0 invert" : "brightness-100"}`}
               />
             )}
             <p className={`${subTextColor} text-xs leading-relaxed max-w-[200px]`}>
@@ -69,7 +67,6 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
             </p>
           </div>
 
-          {/* COLUNA 2: ENDEREÇO */}
           <div className="space-y-3">
             <h4 className="font-bold text-sm tracking-tight uppercase mt-6" style={{ color: titleAndIconColor }}>
               Localização
@@ -84,7 +81,6 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
             </div>
           </div>
 
-          {/* COLUNA 3: CONTATO */}
           <div className="space-y-3">
             <h4 className="font-bold text-sm tracking-tight uppercase mt-6" style={{ color: titleAndIconColor }}>
               Fale Conosco
@@ -104,7 +100,6 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
             </div>
           </div>
 
-          {/* COLUNA 4: REDES E VOLTAR AO TOPO */}
           <div className="flex flex-col items-start md:items-end justify-between gap-4">
             <div className="flex gap-3">
               {socialLinks.map((social, i) => (
@@ -121,8 +116,8 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
                 </motion.a>
               ))}
             </div>
-            
-            <button 
+
+            <button
               onClick={scrollToTop}
               className={`group flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest transition-colors ${isDark ? "text-white/50 hover:text-[#f7a824]" : "text-black/50 hover:text-black"}`}
             >
@@ -134,13 +129,12 @@ const Footer = ({ brandColor, showLogo = true }: FooterProps) => {
           </div>
         </div>
 
-        {/* RODAPÉ FINAL */}
         <div className={`border-t pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] uppercase tracking-[0.2em] ${borderColor} ${isDark ? "text-white/30" : "text-black/40"}`}>
           <p>© {new Date().getFullYear()} Grupo Grão de Ouro. Todos os direitos reservados.</p>
           <div className="flex items-center gap-2">
-             <a href="#" className="hover:opacity-100 transition-colors">Política de Privacidade</a>
-             <span className="w-1 h-1 rounded-full" style={{ backgroundColor: titleAndIconColor }}></span>
-             <p>Excelência no Campo</p>
+            <a href="#" className="hover:opacity-100 transition-colors">Política de Privacidade</a>
+            <span className="w-1 h-1 rounded-full" style={{ backgroundColor: titleAndIconColor }}></span>
+            <p>Excelência no Campo</p>
           </div>
         </div>
       </div>

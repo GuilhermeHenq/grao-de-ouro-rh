@@ -15,14 +15,15 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b border-zinc-100">
-      {/* Aumentei a altura do container de h-16 para h-20 para acomodar a logo maior */}
       <div className="container mx-auto flex items-center justify-between h-26 px-4 lg:px-8">
         <Link to="/" className="flex items-center">
 
-          <img 
-            src={logo} 
-            alt="Grupo Grão de Ouro" 
-            className="h-24 w-auto object-contain transition-transform hover:scale-105" 
+          <img
+            src={logo}
+            alt="Grupo Grão de Ouro"
+            width={96}
+            height={96}
+            className="h-24 w-auto object-contain transition-transform hover:scale-105"
           />
         </Link>
 
@@ -48,12 +49,12 @@ const Header = () => {
         <button
           className="md:hidden text-zinc-900"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
         >
           {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-zinc-100 px-4 pb-6 shadow-xl animate-in fade-in slide-in-from-top-4 duration-300">
           {navLinks.map((l) => (

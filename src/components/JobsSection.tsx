@@ -60,15 +60,14 @@ const JobsSection = () => {
               {empresas.map((empresa, index) => (
                 <motion.div
                   key={empresa.id}
-                  className={`flex-[0_0_85%] md:flex-[0_0_40%] lg:flex-[0_0_31%] min-w-0 ${
-                    index === empresas.length - 1 ? "mr-8" : ""
-                  }`}
+                  className={`flex-[0_0_85%] md:flex-[0_0_40%] lg:flex-[0_0_31%] min-w-0 ${index === empresas.length - 1 ? "mr-8" : ""
+                    }`}
                 >
                   <Link
                     to={`/${empresa.slug}`}
                     className="relative aspect-[3/4.5] rounded-[2rem] overflow-hidden group border border-zinc-200 bg-white flex flex-col"
                   >
-                    {/* Container da Imagem (Parte Superior) */}  
+                    {/* Container da Imagem (Parte Superior) */}
                     <div className="relative flex-1 overflow-hidden">
                       <img
                         src={empresa.bgImage}
@@ -141,9 +140,8 @@ const JobsSection = () => {
                 <button
                   key={idx}
                   onClick={() => scrollTo(idx)}
-                  className={`h-1.5 transition-all duration-300 rounded-full ${
-                    selectedIndex === idx ? "w-6 bg-zinc-900" : "w-1.5 bg-zinc-200"
-                  }`}
+                  className={`h-1.5 transition-all duration-300 rounded-full ${selectedIndex === idx ? "w-6 bg-zinc-900" : "w-1.5 bg-zinc-200"
+                    }`}
                 />
               ))}
             </div>

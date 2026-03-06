@@ -19,18 +19,17 @@ const logosParceiras = [
 
 const MarqueeSection = () => {
   return (
-    <section 
+    <section
       className="bg-white-gradient py-12 border-y border-slate-100 w-full overflow-hidden select-none"
-      style={{ touchAction: 'pan-y' }} // Permite scroll vertical da página, mas evita conflitos horizontais
+      style={{ touchAction: 'pan-y' }}
     >
-      <Marquee 
-        speed={60} 
-        gradient={false} 
-        pauseOnHover={true} // <-- Ativado para pausar ao passar o mouse
+      <Marquee
+        speed={60}
+        gradient={false}
+        pauseOnHover={true}
         aria-hidden="true"
-        className="overflow-hidden" 
+        className="overflow-hidden"
       >
-        {/* Renderização direta sem a div flex extra para melhor comportamento do Marquee */}
         {logosParceiras.map((logo, index) => (
           <div
             key={`${logo.id}-${index}`}
@@ -49,7 +48,6 @@ const MarqueeSection = () => {
         ))}
       </Marquee>
 
-      {/* Alternativa para leitores de tela */}
       <div className="sr-only" role="region" aria-label="Empresas parceiras">
         {logosParceiras.map((logo) => (
           <span key={logo.id}>{logo.nome}</span>

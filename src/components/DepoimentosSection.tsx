@@ -16,7 +16,7 @@ const depoimentos = [
     nome: "Ana Clara",
     cargo: "Analista Plena de Processos",
     videoId: "kZZLNLGaoLI",
-    descricao: "Atuar com melhoria contínua no Grão de Ouro me desafia a evoluir todos os dias. O suporte da equipe faz toda a diferença.",
+    descricao: "Atuar com melhoria contínua no Grupo Grão de Ouro me desafia a evoluir todos os dias. O suporte da equipe faz toda a diferença.",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const depoimentos = [
     nome: "Jamir",
     cargo: "Mecânico Industrial",
     videoId: "S9Xm6HrAqt0",
-    descricao: "Manter as máquinas funcionando com excelência é minha missão. O Grão de Ouro valoriza a dedicação e o trabalho bem feito.",
+    descricao: "Manter as máquinas funcionando com excelência é minha missão. O Grupo Grão de Ouro valoriza a dedicação e o trabalho bem feito.",
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const depoimentos = [
     nome: "Lucimara",
     cargo: "Coordenadora Administrativa",
     videoId: "weA0Jo-vvKM",
-    descricao: "A cultura de reconhecimento e respeito do Grão de Ouro me motiva a dar o meu melhor a cada novo desafio.",
+    descricao: "A cultura de reconhecimento e respeito do Grupo Grão de Ouro me motiva a dar o meu melhor a cada novo desafio.",
   },
   {
     id: 8,
@@ -65,7 +65,7 @@ const depoimentos = [
     nome: "Rosiane",
     cargo: "Supervisora Jurídica",
     videoId: "wvFBOC81rG8",
-    descricao: "Supervisionar a área jurídica com autonomia e confiança é o que faz do Grão de Ouro um lugar especial para trabalhar.",
+    descricao: "Supervisionar a área jurídica com autonomia e confiança é o que faz do Grupo Grão de Ouro um lugar especial para trabalhar.",
   },
   {
     id: 10,

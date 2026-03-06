@@ -3,14 +3,13 @@ import { TrendingUp } from "lucide-react";
 import bannerImg from "@/assets/bannersite2.png";
 
 const HeroSection = () => {
-  // Configuração para o efeito de perspectiva 3D no Hover
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
 
-  // Mapeia a posição do mouse para graus de rotação (ajuste os valores -15/15 para mais ou menos inclinação)
+
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
 
@@ -33,7 +32,7 @@ const HeroSection = () => {
     y.set(0);
   };
 
-  // Variantes originais mantidas
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -68,7 +67,6 @@ const HeroSection = () => {
     >
       <div className="absolute inset-0 opacity-[0.4] bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 
-      {/* Background Blobs */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
@@ -130,11 +128,10 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Área da Imagem com Perspectiva */}
           <div className="order-2 lg:order-none w-full flex flex-col items-center">
             <motion.div
               style={{
-                perspective: "1000px", // Define a profundidade 3D
+                perspective: "1000px",
               }}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
@@ -147,13 +144,15 @@ const HeroSection = () => {
                 style={{
                   rotateX,
                   rotateY,
-                  transformStyle: "preserve-3d", // Mantém o efeito nos filhos
+                  transformStyle: "preserve-3d",
                 }}
                 src={bannerImg}
                 className="w-full h-auto max-h-[60vh] object-contain drop-shadow-2xl"
                 alt="Banner Grupo Grão de Ouro - Oportunidades de Carreira"
-                loading="lazy"
-                decoding="async"
+                width={800}
+                height={600}
+                loading="eager"
+                fetchPriority="high"
               />
             </motion.div>
 
