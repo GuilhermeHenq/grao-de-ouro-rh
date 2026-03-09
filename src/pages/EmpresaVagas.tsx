@@ -29,7 +29,7 @@ const EmpresaVagas = () => {
 
     const cidades = vagasFiltradasPorEmpresa.map(v => v.localizacao);
     return Array.from(new Set(cidades));
-  }, [empresa]);
+  }, [empresa, vagas]);
 
   // Bloqueio de scroll
   useEffect(() => {
@@ -53,7 +53,7 @@ const EmpresaVagas = () => {
 
       return true;
     });
-  }, [empresa, isTodasEmpresas, search, selectedCategorias, selectedCidades, selectedEmpresas]);
+  }, [vagas, empresa, isTodasEmpresas, search, selectedCategorias, selectedCidades, selectedEmpresas]);
 
   if (isLoading) return (
     <div className="min-h-screen flex items-center justify-center">
