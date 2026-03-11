@@ -24,8 +24,8 @@ export interface Vaga {
   localizacao: string;
   descricaoCurta: string;
   descricaoCompleta: string;
-  requisitos: string[];
-  beneficios: string[];
+  requisitos?: string[];
+  beneficios?: string[];
   slug: string;
   celular?: string;
 }

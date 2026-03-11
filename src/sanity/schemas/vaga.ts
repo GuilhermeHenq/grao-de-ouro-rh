@@ -23,6 +23,7 @@ export default defineType({
                     { title: "Forte Grãos", value: "Forte Grãos" },
                     { title: "Nutrividas", value: "Nutrividas" },
                     { title: "Grão de Ouro Rental", value: "Grão de Ouro Rental" },
+                    { title: "Semente Interlagos", value: "Semente Interlagos" },
                 ],
                 layout: "dropdown",
             },
