@@ -6,28 +6,16 @@ export const deskStructure = (S: StructureBuilder) =>
         .items([
             S.listItem()
                 .title("Vagas Grupo Grão de Ouro")
-                .schemaType("vaga")
+                .schemaType("vagaGrupo")
                 .child(
-                    S.documentList()
+                    S.documentTypeList("vagaGrupo")
                         .title("Vagas Grupo Grão de Ouro")
-                        .filter(
-                            '_type == "vaga" && empresa != "Grão de Ouro Máquinas"'
-                        )
-                        .initialValueTemplates([
-                            S.initialValueTemplateItem("vaga-grupo"),
-                        ])
                 ),
             S.listItem()
                 .title("Vagas Grão de Ouro Máquinas")
-                .schemaType("vaga")
+                .schemaType("vagaMaquinas")
                 .child(
-                    S.documentList()
+                    S.documentTypeList("vagaMaquinas")
                         .title("Vagas Grão de Ouro Máquinas")
-                        .filter(
-                            '_type == "vaga" && empresa == "Grão de Ouro Máquinas"'
-                        )
-                        .initialValueTemplates([
-                            S.initialValueTemplateItem("vaga-maquinas"),
-                        ])
                 ),
         ]);

@@ -249,7 +249,7 @@ const VagaDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] relative">
+    <div className="min-h-screen bg-[#f8fafc] relative flex flex-col">
       {/* Background */}
       <div
         className="fixed inset-0 z-0 pointer-events-none"
@@ -288,7 +288,7 @@ const VagaDetail = () => {
       </div>
 
       {/* Main — two-column layout on desktop */}
-      <main className="relative z-10 pt-14">
+      <main className="relative z-10 pt-14 flex-1">
         <div className="max-w-5xl mx-auto px-4 py-6 lg:flex lg:gap-6 lg:items-start">
 
           {/* ===== LEFT PANEL: Job Info (sticky on desktop) ===== */}

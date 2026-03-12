@@ -69,7 +69,7 @@ const EmpresaVagas = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Hero Banner Responsivo */}
       <div className="relative pt-20 overflow-hidden min-h-[400px] flex items-center">
         <div className="absolute inset-0 z-0">
@@ -103,7 +103,7 @@ const EmpresaVagas = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 py-12">
+      <div className="container mx-auto px-4 lg:px-8 py-12 flex-1">
         {/* Search Bar */}
         <div className="flex flex-col md:flex-row gap-4 mb-10">
           <div className="flex-1 relative">

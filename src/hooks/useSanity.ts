@@ -2,9 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { sanityClient } from "@/lib/sanityClient";
 import type { Vaga } from "@/data/vagas";
 
-// ─── Query GROQ ─────────────────────────────────────────────
-
-const VAGAS_QUERY = `*[_type == "vaga"] | order(_createdAt desc) {
+const VAGAS_QUERY = `*[_type in ["vaga", "vagaGrupo", "vagaMaquinas"]] | order(_createdAt desc) {
   "id": _id,
   titulo,
   empresa,
@@ -18,11 +16,9 @@ const VAGAS_QUERY = `*[_type == "vaga"] | order(_createdAt desc) {
   celular
 }`;
 
-// ─── Hook ───────────────────────────────────────────────────
-
 /**
- * Busca todas as vagas do Sanity.
- * Enquanto o Sanity não tiver dados, retorna os dados estáticos como fallback.
+ * Busca todas as vagas do Sanity (todos os tipos).
+ * Retorna array vazio se não houver vagas cadastradas.
  */
 export function useVagas() {
     return useQuery<Vaga[]>({
@@ -30,14 +26,11 @@ export function useVagas() {
         queryFn: async () => {
             try {
                 const data = await sanityClient.fetch(VAGAS_QUERY);
-                if (data && data.length > 0) return data;
+                return data || [];
             } catch {
-                // Sanity não configurado — usa fallback
+                return [];
             }
-            // Fallback: importa dados estáticos
-            const { vagas } = await import("@/data/vagas");
-            return vagas;
         },
-        staleTime: 1000 * 60 * 5, // 5 minutos de cache
+        staleTime: 1000 * 60 * 5,
     });
 }
