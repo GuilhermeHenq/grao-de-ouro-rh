@@ -13,7 +13,7 @@ const VAGAS_QUERY = `*[_type in ["vaga", "vagaGrupo", "vagaMaquinas"]] | order(_
   requisitos,
   beneficios,
   "slug": slug.current,
-  celular
+  uuid
 }`;
 
 /**

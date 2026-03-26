@@ -203,6 +203,9 @@ const VagaDetail = () => {
     setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
+  const FLW_BASE_URL = "https://api.flw.chat/chat/v1/channel/wa/5563992339345";
+  const RESUMO_MAX_LENGTH = 500;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -222,22 +225,36 @@ const VagaDetail = () => {
 
     setIsSubmitting(true);
     try {
-      const mensagem = encodeURIComponent(
-        `*Nova Candidatura*\n\n` +
-          `*Vaga:* ${vaga.titulo}\n` +
-          `*Empresa:* ${vaga.empresa}\n\n` +
-          `*Nome:* ${form.nome}\n` +
-          `*Cidade:* ${form.cidade}\n` +
-          `*WhatsApp:* ${form.whatsapp}\n` +
-          `*LinkedIn:* ${form.linkedin || "Não informado"}\n` +
-          `*Pretensão:* ${form.pretensao || "Não informado"}\n\n` +
-          `*Resumo:* ${form.resumo || "Não informado"}`
-      );
+      const mensagem =
+        `Nova Candidatura\n\n` +
+        `Vaga: ${vaga.titulo}\n` +
+        `Empresa: ${vaga.empresa}\n\n` +
+        `Nome: ${form.nome}\n` +
+        `E-mail: ${form.email}\n` +
+        `Cidade: ${form.cidade}\n` +
+        `WhatsApp: ${form.whatsapp}\n` +
+        `LinkedIn: ${form.linkedin || "Não informado"}\n` +
+        `Pretensão: ${form.pretensao || "Não informado"}\n\n` +
+        `Resumo: ${form.resumo || "Não informado"}`;
 
-      const celularContato = vaga.celular || "553598724449";
-      window.open(`https://wa.me/${celularContato}?text=${mensagem}`, "_blank");
+      const currentParams = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams();
+
+      params.set("text", mensagem);
+
+      ["utm_source", "utm_campaign", "utm_content", "utm_medium"].forEach((key) => {
+        const val = currentParams.get(key);
+        if (val) params.set(key, val);
+      });
+
+      if (vaga.uuid) {
+        params.set("utm_term", vaga.uuid);
+      }
+
+      const finalUrl = `${FLW_BASE_URL}?${params.toString()}`;
+      window.open(finalUrl, "_blank");
       toast({ title: "Sucesso!", description: "Redirecionando para o WhatsApp..." });
-    } catch (error) {
+    } catch {
       toast({
         variant: "destructive",
         title: "Erro",
@@ -495,19 +512,26 @@ const VagaDetail = () => {
                   />
                 </div>
 
-                <Field
-                  label="Resumo Profissional"
-                  name="resumo"
-                  isTextArea
-                  placeholder="Conte brevemente sobre você, experiências e objetivos..."
-                  optional
-                  value={form.resumo}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={errors.resumo}
-                  touched={touched.resumo}
-                  brandColor={brandColor}
-                />
+                <div>
+                  <Field
+                    label="Resumo Profissional"
+                    name="resumo"
+                    isTextArea
+                    placeholder="Conte brevemente sobre você, experiências e objetivos..."
+                    optional
+                    value={form.resumo}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                      if (e.target.value.length <= RESUMO_MAX_LENGTH) handleChange(e);
+                    }}
+                    onBlur={handleBlur}
+                    error={errors.resumo}
+                    touched={touched.resumo}
+                    brandColor={brandColor}
+                  />
+                  <p className="text-xs text-slate-400 text-right mt-1">
+                    {form.resumo.length}/{RESUMO_MAX_LENGTH}
+                  </p>
+                </div>
 
                 <button
                   type="submit"

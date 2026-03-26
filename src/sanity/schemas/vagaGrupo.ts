@@ -80,14 +80,11 @@ export default defineType({
             of: [{ type: "string" }],
         }),
         defineField({
-            name: "celular",
-            title: "Celular de Contato (WhatsApp)",
+            name: "uuid",
+            title: "UUID da Vaga (FLW)",
             type: "string",
-            description: "Número com DDD, sem espaços. Ex: 5535987244449",
-            validation: (Rule) => Rule.required().regex(/^\d{12,13}$/, {
-                name: "telefone",
-                invert: false,
-            }).error("Insira apenas números com DDD (12-13 dígitos). Ex: 5535987244449"),
+            description: "Identificador único da vaga na FLW. Será usado como utm_term no envio.",
+            validation: (Rule) => Rule.required(),
         }),
     ],
     preview: {

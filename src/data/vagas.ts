@@ -27,7 +27,7 @@ export interface Vaga {
   requisitos?: string[];
   beneficios?: string[];
   slug: string;
-  celular?: string;
+  uuid?: string;
 }
 
 export interface Empresa {
