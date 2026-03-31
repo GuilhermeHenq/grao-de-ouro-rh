@@ -98,7 +98,7 @@ const JobsSection = () => {
                         <img
                           src={empresa.image}
                           alt={`Logo ${empresa.nome}`}
-                          className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                          className={`max-w-full object-contain transition-transform duration-500 group-hover:scale-105 ${empresa.slug === "nutrimax" ? "max-h-[70%]" : "max-h-full"}`}
                         />
                       </div>
 
