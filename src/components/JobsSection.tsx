@@ -38,7 +38,7 @@ const JobsSection = () => {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div className="max-w-2xl text-left">
-            <span className="inline-block px-4 py-1 rounded-full bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest mb-4 border border-zinc-200">
+            <span className="inline-block px-5 py-1.5 rounded-full bg-zinc-100 text-zinc-600 text-xs font-bold uppercase tracking-widest mb-4 border border-zinc-200">
               Oportunidades
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 leading-tight">

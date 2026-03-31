@@ -6,9 +6,10 @@ import logoSemente from "/src/assets/logosemente.png";
 import logoRental from "/src/assets/logorental.png";
 import logoNutrividas from "/src/assets/logonutrividas.png";
 import logomaquinas from "/src/assets/logomaquinas.png";
+import logoNutrimax from "/src/assets/LogoNutrimax.png";
 
 const logosParceiras = [
-  { id: 1, nome: "Nutrimax", src: "https://nutrimax.ind.br/img/logo_1.png" },
+  { id: 1, nome: "Nutrimax", src: logoNutrimax },
   { id: 2, nome: "Grão de Ouro", src: logoGrao },
   { id: 3, nome: "Forte graos", src: logoForte },
   { id: 4, nome: "Semente Interlagos", src: logoSemente },

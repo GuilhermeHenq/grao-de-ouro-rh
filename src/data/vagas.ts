@@ -15,6 +15,7 @@ import bannerNutrividas from "@/assets/bgNutrividas.png";
 import fundoGraoDeOuroMaquinas from "@/assets/graodeouromaquinas.png";
 import todas from "@/assets/todas.png";
 import logoGrupo from "@/assets/logogrupo.png";
+import logoNutrimax from "@/assets/LogoNutrimax.png";
 
 export interface Vaga {
   id: number | string;
@@ -68,7 +69,7 @@ export const empresas: Empresa[] = [
     nome: "Nutrimax",
     slug: "nutrimax",
     descricao: "Nutrimax é referência em Nutrição Animal em toda sua área de atuação.",
-    image: "https://nutrimax.ind.br/img/logo_1.png",
+    image: logoNutrimax,
     bgImage: fundoNutrimax || "https://via.placeholder.com/1920x600",
     corPrincipal: "#c22131",
     banner: bannerNutrimax || "https://via.placeholder.com/1920x400",
