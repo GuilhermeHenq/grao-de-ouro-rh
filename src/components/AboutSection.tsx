@@ -19,12 +19,12 @@ const AboutSection = () => {
     const initPlayer = () => {
       if (containerRef.current && !playerRef.current) {
         playerRef.current = new (window as any).YT.Player(containerRef.current, {
-          videoId: "oMhaIqRVJMw", // https://youtu.be/oMhaIqRVJMw
+          videoId: "KVGy8T9eBvw", // https://youtu.be/KVGy8T9eBvw
           playerVars: {
             autoplay: 1,
             mute: 1,
             loop: 1,
-            playlist: "oMhaIqRVJMw",
+            playlist: "KVGy8T9eBvw",
             controls: 1,
             modestbranding: 1,
             rel: 0,
