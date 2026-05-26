@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { empresas } from "@/data/vagas";
 import { useVagas } from "@/hooks/useSanity";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import {
   ArrowLeft, MapPin, Building2, Send, User,
   FileText, Link as LinkIcon, DollarSign, Map as MapIcon,
@@ -143,6 +143,8 @@ const VagaDetail = () => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [honeypot, setHoneypot] = useState("");
+  const formOpenedAt = useRef(Date.now());
 
   const isDark = useMemo(() => {
     const hex = brandColor.replace("#", "");
@@ -208,7 +210,9 @@ const VagaDetail = () => {
 
   const PORTAL_WEBHOOK_URL =
     "https://n8n.srv894982.hstgr.cloud/webhook/aa42d93a-eff4-436a-992b-c773e0b01263";
-  const PORTAL_WEBHOOK_AUTH = "Basic " + btoa("portal-vagas:bb6ba615-6991-47d2-bcb9-307a757df200");
+  const MIN_FILL_TIME_MS = 2000;
+  const RATE_LIMIT_MS = 30_000;
+  const RATE_LIMIT_KEY = "portal_vagas_last_submit";
 
   const formatWhatsappE164 = (masked: string) => {
     const digits = masked.replace(/\D/g, "");
@@ -237,6 +241,30 @@ const VagaDetail = () => {
       return;
     }
 
+    if (honeypot) {
+      toast({ title: "Sucesso!", description: "Redirecionando para o WhatsApp..." });
+      return;
+    }
+
+    const fillDurationMs = Date.now() - formOpenedAt.current;
+    if (fillDurationMs < MIN_FILL_TIME_MS) {
+      return;
+    }
+
+    try {
+      const last = Number(localStorage.getItem(RATE_LIMIT_KEY) || 0);
+      if (Date.now() - last < RATE_LIMIT_MS) {
+        toast({
+          variant: "destructive",
+          title: "Aguarde",
+          description: "Espere alguns segundos antes de enviar novamente.",
+        });
+        return;
+      }
+    } catch {
+      // localStorage indisponível (modo privado) — segue
+    }
+
     setIsSubmitting(true);
     try {
       const payload = {
@@ -259,37 +287,22 @@ const VagaDetail = () => {
           salaryExpectation: formatSalaryExpectation(form.pretensao),
           professionalSummary: form.resumo || "",
         },
+        _meta: {
+          fillDurationMs,
+        },
       };
-
-      console.log("[Webhook] URL:", PORTAL_WEBHOOK_URL);
-      console.log("[Webhook] Payload:", payload);
 
       fetch(PORTAL_WEBHOOK_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: PORTAL_WEBHOOK_AUTH,
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      })
-        .then(async (res) => {
-          const bodyText = await res.text().catch(() => "");
-          if (res.ok) {
-            console.log(
-              `%c[Webhook] ✅ Sucesso ${res.status} ${res.statusText}`,
-              "color: green; font-weight: bold;",
-              bodyText
-            );
-          } else {
-            console.error(
-              `[Webhook] ❌ Falha HTTP ${res.status} ${res.statusText}`,
-              bodyText
-            );
-          }
-        })
-        .catch((err) => {
-          console.error("[Webhook] ❌ Erro de rede/CORS:", err);
-        });
+      }).catch(() => {});
+
+      try {
+        localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
+      } catch {
+        // localStorage indisponível — segue
+      }
 
       const mensagem =
         `Nova Candidatura\n\n` +
@@ -500,6 +513,23 @@ const VagaDetail = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="p-5 space-y-4">
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    opacity: 0,
+                    pointerEvents: "none",
+                  }}
+                />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Field
                     label="Nome Completo *"
