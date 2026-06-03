@@ -210,6 +210,8 @@ const VagaDetail = () => {
 
   const PORTAL_WEBHOOK_URL =
     "https://n8n.srv894982.hstgr.cloud/webhook/aa42d93a-eff4-436a-992b-c773e0b01263";
+  const PORTAL_WEBHOOK_AUTH =
+    "Basic " + btoa("portal-vagas:bb6ba615-6991-47d2-bcb9-307a757df200");
   const MIN_FILL_TIME_MS = 2000;
   const RATE_LIMIT_MS = 30_000;
   const RATE_LIMIT_KEY = "portal_vagas_last_submit";
@@ -294,9 +296,17 @@ const VagaDetail = () => {
 
       fetch(PORTAL_WEBHOOK_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: PORTAL_WEBHOOK_AUTH,
+        },
         body: JSON.stringify(payload),
-      }).catch(() => {});
+      })
+        .then((res) => {
+          if (res.ok) console.log("[Webhook] OK");
+          else console.error("[Webhook] FAIL", res.status);
+        })
+        .catch(() => console.error("[Webhook] FAIL (network)"));
 
       try {
         localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
