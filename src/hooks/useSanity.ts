@@ -29,6 +29,12 @@ export const buildVagaSlug = (titulo: string, uuid?: string | null) => {
     return uuidPart ? `${base}-${uuidPart}` : base;
 };
 
+const toText = (value: unknown): string => {
+    if (Array.isArray(value)) return value.filter(Boolean).join("\n");
+    if (typeof value === "string") return value;
+    return "";
+};
+
 /**
  * Busca todas as vagas do Sanity (todos os tipos).
  * Retorna array vazio se não houver vagas cadastradas.
@@ -42,6 +48,8 @@ export function useVagas() {
                 return (data || []).map((v: Vaga) => ({
                     ...v,
                     slug: buildVagaSlug(v.titulo, v.uuid),
+                    requisitos: toText((v as { requisitos?: unknown }).requisitos),
+                    beneficios: toText((v as { beneficios?: unknown }).beneficios),
                 }));
             } catch {
                 return [];

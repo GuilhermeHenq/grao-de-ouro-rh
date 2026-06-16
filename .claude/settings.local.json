@@ -4,7 +4,9 @@
       "Bash(git push *)",
       "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('c:/Users/guilherme.serafini/gr-o-de-ouro-careers/src/hooks/useSanity.ts','utf8'\\); const m=c.match\\(/replace\\\\\\\\\\(\\\\\\\\/\\\\\\\\[\\(.+?\\)\\\\\\\\]\\\\\\\\/g/\\); if\\(m\\){console.log\\('Hex codes:'\\); for\\(const ch of m[1]\\){console.log\\(ch.charCodeAt\\(0\\).toString\\(16\\)\\);}}\")",
       "Bash(npx tsc *)",
-      "Bash(echo \"EXIT:$?\")"
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('c:/Users/guilherme.serafini/gr-o-de-ouro-careers/src/pages/VagaDetail.tsx','utf8'\\); const m=c.match\\(/replace\\\\\\\\\\(\\\\\\\\/\\\\\\\\[\\(.+?\\)\\\\\\\\]\\\\\\\\/g/g\\); if\\(m\\){for\\(const mm of m\\){console.log\\(mm\\); for\\(const ch of mm.slice\\(10,mm.length-4\\)\\){console.log\\(' ',ch.charCodeAt\\(0\\).toString\\(16\\)\\);}}}\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('c:/Users/guilherme.serafini/gr-o-de-ouro-careers/src/pages/VagaDetail.tsx','utf8'\\); const idx = c.indexOf\\('normalize\\(\\\\\"NFD\\\\\"\\)'\\); const sub = c.substring\\(idx, idx+150\\); for\\(const ch of sub\\){const code=ch.charCodeAt\\(0\\); if\\(code<32||code>126\\) console.log\\('NON-ASCII at:', code.toString\\(16\\), ch\\); }\")"
     ]
   }
 }

@@ -5,7 +5,7 @@ import { useState, useMemo, useRef } from "react";
 import {
   ArrowLeft, MapPin, Building2, Send, User,
   FileText, Link as LinkIcon, DollarSign, Map as MapIcon,
-  AlertCircle, CheckCircle2,
+  AlertCircle, CheckCircle2, SearchX,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
@@ -131,9 +131,28 @@ const VagaDetail = () => {
   const { toast } = useToast();
   const { data: vagas = [], isLoading } = useVagas();
 
+  const normalize = (s: string) =>
+    (s || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .trim();
+
   const vaga = vagas.find((v) => v.slug === slug);
-  const empresa = empresas.find((e) => e.nome === vaga?.empresa);
+  const empresa = empresas.find(
+    (e) => normalize(e.nome) === normalize(vaga?.empresa || "")
+  );
   const brandColor = empresa?.corPrincipal || "#f7a824";
+
+  if (import.meta.env.DEV && !isLoading && (!vaga || !empresa)) {
+    console.warn("[VagaDetail] lookup falhou", {
+      slug,
+      vagaEncontrada: !!vaga,
+      empresaDaVaga: vaga?.empresa,
+      empresaEncontrada: !!empresa,
+      slugsDisponiveis: vagas.map((v) => v.slug),
+    });
+  }
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [form, setForm] = useState({
@@ -161,7 +180,53 @@ const VagaDetail = () => {
       </div>
     );
 
-  if (!vaga || !empresa) return null;
+  if (!vaga || !empresa) {
+    return (
+      <div className="min-h-screen bg-[#f8fafc] flex flex-col">
+        <div className="fixed top-0 left-0 right-0 z-[100] h-14 flex items-center border-b border-slate-200 bg-white/95 backdrop-blur-xl">
+          <div className="container mx-auto px-4">
+            <Link
+              to="/todas"
+              className="inline-flex items-center gap-2 font-semibold text-sm text-slate-700 hover:text-[#f7a824] transition-colors"
+            >
+              <div className="p-1 rounded-full border border-slate-300 bg-slate-50">
+                <ArrowLeft size={14} />
+              </div>
+              Voltar às vagas
+            </Link>
+          </div>
+        </div>
+
+        <main className="flex-1 flex items-center justify-center px-4 pt-14">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-md w-full text-center bg-white rounded-2xl shadow-lg border border-slate-200/60 p-8"
+          >
+            <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-amber-50 flex items-center justify-center">
+              <SearchX className="w-8 h-8 text-[#f7a824]" />
+            </div>
+            <h1 className="text-2xl font-bold text-slate-900 mb-2">
+              Vaga não encontrada
+            </h1>
+            <p className="text-sm text-slate-500 mb-6 leading-relaxed">
+              Essa oportunidade pode ter sido encerrada ou o link está
+              desatualizado. Veja abaixo as vagas que estão abertas agora.
+            </p>
+            <Link
+              to="/todas"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f7a824] text-black font-bold text-sm hover:brightness-105 active:scale-[0.98] transition-all shadow-md"
+            >
+              Ver todas as vagas
+              <ArrowLeft className="w-4 h-4 rotate-180" />
+            </Link>
+          </motion.div>
+        </main>
+
+        <Footer />
+      </div>
+    );
+  }
 
   const maskPhone = (value: string) =>
     value
