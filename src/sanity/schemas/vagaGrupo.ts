@@ -1,5 +1,19 @@
 import { defineType, defineField } from "sanity";
 
+const slugify = (text: string) =>
+    (text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+const buildSlug = (doc: { titulo?: string; uuid?: string }) => {
+    const base = slugify(doc?.titulo || "vaga");
+    const uuidPart = (doc?.uuid || "").replace(/-/g, "").slice(0, 8).toLowerCase();
+    return uuidPart ? `${base}-${uuidPart}` : base;
+};
+
 export default defineType({
     name: "vagaGrupo",
     title: "Vaga — Grupo",
@@ -32,10 +46,8 @@ export default defineType({
             type: "string",
             options: {
                 list: [
-                    { title: "Administrativo", value: "Administrativo" },
                     { title: "Operacional", value: "Operacional" },
-                    { title: "Comercial", value: "Comercial" },
-                    { title: "Técnico", value: "Técnico" },
+                    { title: "Administrativo", value: "Administrativo" },
                 ],
                 layout: "radio",
             },
@@ -48,43 +60,42 @@ export default defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: "slug",
-            title: "Slug (URL)",
-            type: "slug",
-            options: { source: "titulo", maxLength: 120 },
+            name: "uuid",
+            title: "UUID da Vaga (FLW)",
+            type: "string",
+            description: "Identificador único da vaga na FLW. Também usado para gerar o slug da URL e como utm_term no envio.",
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: "descricaoCurta",
-            title: "Descrição Curta",
-            type: "text",
-            rows: 2,
-            validation: (Rule) => Rule.required().max(200),
+            name: "slug",
+            title: "Slug (URL)",
+            type: "slug",
+            description: "Gerado automaticamente a partir do título + parte do UUID. Clique em 'Generate'.",
+            options: {
+                source: (doc) => buildSlug(doc as { titulo?: string; uuid?: string }),
+                maxLength: 120,
+            },
         }),
         defineField({
             name: "descricaoCompleta",
             title: "Descrição Completa",
             type: "text",
-            rows: 5,
+            rows: 6,
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: "requisitos",
             title: "Requisitos",
-            type: "array",
-            of: [{ type: "string" }],
+            type: "text",
+            rows: 6,
+            description: "Cole os requisitos já em tópicos. O texto será exibido preservando as quebras de linha.",
         }),
         defineField({
             name: "beneficios",
             title: "Benefícios",
-            type: "array",
-            of: [{ type: "string" }],
-        }),
-        defineField({
-            name: "uuid",
-            title: "UUID da Vaga (FLW)",
-            type: "string",
-            description: "Identificador único da vaga na FLW. Será usado como utm_term no envio.",
-            validation: (Rule) => Rule.required(),
+            type: "text",
+            rows: 6,
+            description: "Cole os benefícios já em tópicos. O texto será exibido preservando as quebras de linha.",
         }),
     ],
     preview: {

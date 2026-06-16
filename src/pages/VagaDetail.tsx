@@ -323,7 +323,7 @@ const VagaDetail = () => {
         `Cidade: ${form.cidade}\n` +
         `WhatsApp: ${form.whatsapp}\n` +
         `LinkedIn: ${form.linkedin || "Não informado"}\n` +
-        `Pretensão: ${form.pretensao || "Não informado"}\n\n` +
+        `Última Remuneração: ${form.pretensao || "Não informado"}\n\n` +
         `Resumo: ${form.resumo || "Não informado"}`;
 
       const currentParams = new URLSearchParams(window.location.search);
@@ -447,7 +447,7 @@ const VagaDetail = () => {
                   </p>
                 </div>
 
-                {vaga.requisitos && vaga.requisitos.length > 0 && (
+                {vaga.requisitos && vaga.requisitos.trim().length > 0 && (
                   <div className="space-y-2">
                     <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
                       <span
@@ -456,21 +456,13 @@ const VagaDetail = () => {
                       />
                       Requisitos
                     </h3>
-                    <ul className="space-y-1.5">
-                      {vaga.requisitos.map((req: string, i: number) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                          <div
-                            className="w-1 h-1 rounded-full mt-2 shrink-0"
-                            style={{ backgroundColor: brandColor }}
-                          />
-                          {req}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-line">
+                      {vaga.requisitos}
+                    </p>
                   </div>
                 )}
 
-                {vaga.beneficios && vaga.beneficios.length > 0 && (
+                {vaga.beneficios && vaga.beneficios.trim().length > 0 && (
                   <div className="space-y-2">
                     <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
                       <span
@@ -479,17 +471,9 @@ const VagaDetail = () => {
                       />
                       Benefícios
                     </h3>
-                    <ul className="space-y-1.5">
-                      {vaga.beneficios.map((ben: string, i: number) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                          <div
-                            className="w-1 h-1 rounded-full mt-2 shrink-0"
-                            style={{ backgroundColor: brandColor }}
-                          />
-                          {ben}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-line">
+                      {vaga.beneficios}
+                    </p>
                   </div>
                 )}
               </div>
@@ -604,7 +588,7 @@ const VagaDetail = () => {
                     brandColor={brandColor}
                   />
                   <Field
-                    label="Pretensão Salarial"
+                    label="Última Remuneração"
                     name="pretensao"
                     icon={DollarSign}
                     placeholder="R$ 0,00"
@@ -652,7 +636,7 @@ const VagaDetail = () => {
                     "Enviando..."
                   ) : (
                     <>
-                      Enviar via WhatsApp
+                      Iniciar inscrição por WhatsApp
                       <Send size={14} />
                     </>
                   )}

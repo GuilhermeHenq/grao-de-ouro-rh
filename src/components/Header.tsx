@@ -40,7 +40,7 @@ const Header = () => {
         </nav>
 
         <a
-          href="/#vagas"
+          href="/todas"
           className="text-lg hidden md:inline-flex items-center px-6 py-2.5 rounded-full bg-[#f7a824] text-black font-bold hover:brightness-110 transition-all duration-200 hover:shadow-lg hover:shadow-[#f7a824]/20"
         >
           Ver Vagas
@@ -68,7 +68,7 @@ const Header = () => {
             </a>
           ))}
           <a
-            href="/#vagas"
+            href="/todas"
             onClick={() => setMobileOpen(false)}
             className="mt-4 block text-center px-5 py-3 rounded-full bg-[#f7a824] text-black font-bold text-sm"
           >

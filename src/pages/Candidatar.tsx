@@ -7,16 +7,17 @@ import { useToast } from "@/hooks/use-toast";
 
 const Field = ({
   label, name, type = "text", placeholder,
-  isTextArea = false, value, onChange, onBlur, error, touched
+  isTextArea = false, value, onChange, onBlur, error, touched, optional
 }: any) => {
   const hasError = touched && error;
   const isSuccess = touched && !error && value?.trim().length > 0;
+  const isOptional = optional || name === "linkedin";
 
   return (
     <div className="space-y-1.5">
       <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
         {label}{" "}
-        {name === "linkedin" && (
+        {isOptional && (
           <span className="text-slate-300 font-normal normal-case">(Opcional)</span>
         )}
       </label>
@@ -287,8 +288,9 @@ const Candidatar = () => {
                 </div>
               </div>
               <Field
-                label="Pretensão Salarial"
+                label="Última Remuneração"
                 name="pretensao"
+                optional
                 placeholder="R$ 0.000,00"
                 value={formData.pretensao}
                 onChange={handleChange}

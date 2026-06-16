@@ -8,13 +8,26 @@ const VAGAS_QUERY = `*[_type in ["vaga", "vagaGrupo", "vagaMaquinas"]] | order(_
   empresa,
   categoria,
   localizacao,
-  descricaoCurta,
   descricaoCompleta,
   requisitos,
   beneficios,
   "slug": slug.current,
   uuid
 }`;
+
+const slugify = (text: string) =>
+    text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+export const buildVagaSlug = (titulo: string, uuid?: string | null) => {
+    const base = slugify(titulo || "vaga");
+    const uuidPart = (uuid || "").replace(/-/g, "").slice(0, 8).toLowerCase();
+    return uuidPart ? `${base}-${uuidPart}` : base;
+};
 
 /**
  * Busca todas as vagas do Sanity (todos os tipos).
@@ -26,7 +39,10 @@ export function useVagas() {
         queryFn: async () => {
             try {
                 const data = await sanityClient.fetch(VAGAS_QUERY);
-                return data || [];
+                return (data || []).map((v: Vaga) => ({
+                    ...v,
+                    slug: buildVagaSlug(v.titulo, v.uuid),
+                }));
             } catch {
                 return [];
             }

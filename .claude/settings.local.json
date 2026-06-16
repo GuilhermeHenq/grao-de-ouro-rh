@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('c:/Users/guilherme.serafini/gr-o-de-ouro-careers/src/hooks/useSanity.ts','utf8'\\); const m=c.match\\(/replace\\\\\\\\\\(\\\\\\\\/\\\\\\\\[\\(.+?\\)\\\\\\\\]\\\\\\\\/g/\\); if\\(m\\){console.log\\('Hex codes:'\\); for\\(const ch of m[1]\\){console.log\\(ch.charCodeAt\\(0\\).toString\\(16\\)\\);}}\")",
+      "Bash(npx tsc *)",
+      "Bash(echo \"EXIT:$?\")"
     ]
   }
 }
